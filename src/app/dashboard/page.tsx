@@ -4,11 +4,9 @@ import store from "@/lib/store";
 
 const dashboard = () => {
   return (
-    <Provider store={store}>
       <>
         <h1>Dashboard</h1>
       </>
-    </Provider>
   );
 };
 
