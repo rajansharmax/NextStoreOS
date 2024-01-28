@@ -1,10 +1,8 @@
 import {CaseReducer} from "@reduxjs/toolkit";
-import AppState from "../../reducer/config/interface";
+import AppState from "../../reducer/interface";
 
 const initializeCase: CaseReducer = (state: AppState, action) => {
-    const data = action.payload;
-    console.log('data',data);
-
-}
+    state.config.initialized = true;
+    console.log(state.config.initialized);}
 
 export default initializeCase;

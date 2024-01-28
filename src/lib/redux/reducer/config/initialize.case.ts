@@ -3,7 +3,7 @@ import {CaseReducer} from "@reduxjs/toolkit";
 import AppState from "../interface";
 
 const initializeCase: CaseReducer = (state: AppState, action) => {
-    const data = action.payload;
+    state.config.initialized = true;
 }
 
 export default initializeCase;
