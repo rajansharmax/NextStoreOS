@@ -1,6 +1,7 @@
 import FooterStyleWrapper from "./styled";
 import { Image } from "react-bootstrap";
 import image from '@/assets/images/logo.png'
+import ArrowIcon from '@/assets/images/blog/arrow-icon.png'
 import FooterLinks from "@/assets/data/footer/FooterLinks";
 import FooterBottom from "./Footerbottom";
 
@@ -48,7 +49,7 @@ const Footer = () => {
                     required
                   />
                   <button>
-                    <Image src={'/images/blog/arrow-icon.png'} alt="bithu nft arrow" />
+                    <Image src={ArrowIcon.src} alt="bithu nft arrow" />
                   </button>
                 </div>
               </div>

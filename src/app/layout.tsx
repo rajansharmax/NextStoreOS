@@ -8,6 +8,7 @@ import Head from "@/app/components/Layout/Partials/Head";
 import Layout from "./components/Layout";
 import { inter } from '@/config/Fonts'
 import { AntdRegistry } from '@ant-design/nextjs-registry';
+import 'bootstrap/dist/css/bootstrap.css';
 
 export const metadata: Metadata = {
   title: "Neon Lights",

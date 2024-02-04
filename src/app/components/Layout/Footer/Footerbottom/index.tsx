@@ -22,7 +22,7 @@ const FooterBottom = () => {
                 Copyright ©2022 Bithu, All rights reserved.
               </div>
             </div>
-            <a href="# " className="bact_to_top_btn">
+            <a href="#" className="bact_to_top_btn">
               <Image src={backToTopIcon} alt="bithu nft back to top" />
             </a>
             <div className="bottom_footer_right">

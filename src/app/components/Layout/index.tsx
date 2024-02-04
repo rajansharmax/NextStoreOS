@@ -6,7 +6,6 @@ import { useEffect } from "react";
 import Initializing from "@/app/components/Initializing";
 import Header from "@/app/components/Layout/Header";
 import Footer from "@/app/components/Layout/Footer";
-import GlobalStyles from "@/assets/GlobalStyles";
 
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -20,7 +19,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   if (!initialized) return <Initializing />;
 
   return (<>
-    <GlobalStyles />
     <Header />
       <div className="layout">
         {children}
