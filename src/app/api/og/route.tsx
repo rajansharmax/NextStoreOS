@@ -20,7 +20,7 @@ export async function GET() {
           alignItems: 'center',
         }}
       >
-        👋 Hello
+        Neon Lights
       </div>
     ),
     {
