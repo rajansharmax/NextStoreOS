@@ -25,6 +25,14 @@ const Head = () => {
         type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
       />
+      <meta property="twitter:image" content="Twitter link preview image URL"></meta>
+      <meta property="twitter:card" content="summary_large_image"></meta>
+      <meta property="twitter:title" content="Twitter link preview title"></meta>
+      <meta property="twitter:description" content="Twitter link preview description"></meta>
+      <meta property="og:image" content="Link preview image URL"></meta>
+      <meta property="og:title" content="Link preview title"></meta>
+      <meta property="og:description" content="Link preview description" />
+      <meta property="og:url" content="Canonical link preview URL"></meta>
     </head>
   );
 }
