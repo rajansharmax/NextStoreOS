@@ -6,6 +6,8 @@ import { useEffect } from "react";
 import Initializing from "@/app/components/Initializing";
 import Header from "@/app/components/Layout/Header";
 import Footer from "@/app/components/Layout/Footer";
+import Banner from "../common/Banner";
+import FlashSlider from "../common/FlashSlider";
 
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -20,6 +22,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   return (<>
     <Header />
+    <Banner />
+    <FlashSlider />
       <div className="layout">
         {children}
       </div>
