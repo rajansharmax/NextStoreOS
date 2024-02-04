@@ -8,6 +8,7 @@ import Header from "@/app/components/Layout/Header";
 import Footer from "@/app/components/Layout/Footer";
 import Banner from "../common/Banner";
 import FlashSlider from "../common/FlashSlider";
+import PhotosSlider from "../common/PhotosSlider";
 
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -24,6 +25,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     <Header />
     <Banner />
     <FlashSlider />
+    <PhotosSlider />
       <div className="layout">
         {children}
       </div>
