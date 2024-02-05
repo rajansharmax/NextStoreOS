@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model artwork {
+  id                  Int               @id @default(autoincrement())
+  category_id         Int?
+  tags                String            @db.LongText
+  status              Boolean
+  image_name          String?           @db.VarChar(255)
+  artwork_category    artwork_category? @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_881FC57612469DE2")
+
+  @@index([category_id], map: "IDX_881FC57612469DE2")
+}
+
+model artwork_category {
+  id      Int       @id @default(autoincrement())
+  title   String    @db.VarChar(255)
+  status  Boolean
+  artwork artwork[]
+}
