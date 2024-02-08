@@ -9,6 +9,8 @@ import Footer from "@/app/components/Layout/Footer";
 import Banner from "../common/Banner";
 import FlashSlider from "../common/FlashSlider";
 import PhotosSlider from "../common/PhotosSlider";
+import Partner from "../common/Partner";
+import WhySection from "../common/WhySection";
 
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
@@ -29,6 +31,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <div className="layout">
         {children}
       </div>
+    <Partner />
+    <WhySection />
     <Footer />
   </>);
 }
