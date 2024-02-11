@@ -1,6 +1,4 @@
-type Route = string | ((...args: any[]) => string);
-
-const routes: Record<string, Route> = {
+const routes = {
   home: "/",
   authors: "/authors",
   explore: "/explore",
@@ -22,7 +20,8 @@ const routes: Record<string, Route> = {
   feed: "/feed",
   wallet: "/wallet",
   followedShop: "/followed-authors",
-  orderUrl: (tracking_number: string) => `/orders/${encodeURIComponent(tracking_number)}`,
+  orderUrl: (tracking_number: string) =>
+    `/orders/${encodeURIComponent(tracking_number)}`,
   productUrl: (slug: string) => `/products/${slug}`,
   tagUrl: (slug: string) => `/products/tags/${slug}`,
   shopUrl: (slug: string) => `/authors/${slug}`,

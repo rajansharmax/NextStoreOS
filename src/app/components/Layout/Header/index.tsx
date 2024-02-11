@@ -8,6 +8,9 @@ import NavWrapper from './styled';
 import { useModal } from "@/lib/utils/ModalContext";
 import Button from "@/app/components/common/Button";
 import MobileMenu from "./MobileMenu";
+import { Container } from "react-bootstrap";
+import Link from "next/link";
+import routes from "@/config/routes";
 
 const Header = () => {
   const {  } = useModal();
@@ -29,7 +32,7 @@ const Header = () => {
 
   return (
     <NavWrapper className="bithu_header" id="navbar">
-      <div className="container">
+      <Container>
         <div className="bithu_menu_sect">
           <div className="bithu_menu_left_sect">
             <div className="logo">
@@ -42,10 +45,10 @@ const Header = () => {
             <div className="bithu_menu_list">
               <ul>
                 <li>
-                  <a href="#home">Home</a>
+                  <Link href={routes.home}>Home</Link>
                 </li>
                 <li>
-                  <a href="#about">About</a>
+                  <Link href={routes.about}>About Us</Link>
                 </li>
                 <li>
                   <a href="#roadmap">Roadmap</a>
@@ -119,7 +122,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-      </div>
+      </Container>
       {isMobileMenu && <MobileMenu mobileMenuhandle={handleMobileMenu} />}
     </NavWrapper>
   );

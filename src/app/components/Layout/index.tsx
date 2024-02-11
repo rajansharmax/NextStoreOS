@@ -25,14 +25,9 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   return (<>
     <Header />
-    <Banner />
-    <FlashSlider />
-    <PhotosSlider />
       <div className="layout">
         {children}
       </div>
-    <Partner />
-    <WhySection />
     <Footer />
   </>);
 }
