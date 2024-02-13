@@ -1,106 +1,73 @@
-"use client";
-import { useEffect } from "react";
+"use client"
+import routes from "@/config/routes";
 import PageHeader from "../components/common/PageHeader";
-import { useAppSelector } from "@/lib/hook";
 import { Container } from "react-bootstrap";
-import { AboutUsWrapper, AddressInfo, ContactInfo, ContactUSForm, ContactUsInfo, TagSection } from "./styled";
-import { Col, Form, Input, Row } from "antd";
+import { Col, Image, Row } from "antd";
+import { AboutUSImages, AboutUsContent, AboutUsWrapper } from "./styled";
 import Button from "../components/common/Button";
-import TextArea from "antd/es/input/TextArea";
-import Image from "next/image";
-import phoneIcon from "@/assets/images/icon/call-outgoing.svg";
-import msgIcon from "@/assets/images/icon/sms-notification.svg";
+import thumb1 from "@/assets/images/nft/story-img1.png";
+import thumb2 from "@/assets/images/nft/story-img2.png";
+import thumb3 from "@/assets/images/nft/story-img3.png";
+import thumb4 from "@/assets/images/nft/story-img4.png";
+
 
 const AboutUs = () => {
-  const config = useAppSelector((state) => state.config);
 
-  useEffect(() => {
-    console.log(config, "useeffect");
-  });
-
-  const handleSubmit = (e: any) => {
-    console.log(e);
-  };
+  const items = [
+    {
+      title: "Home",
+      href: routes.home,
+    },
+    {
+      title: "About",
+      href: routes.about,
+    },
+  ];
 
   return (
     <>
-      <PageHeader />
+      <PageHeader items={items} title="About Us" />
       <AboutUsWrapper>
         <Container>
-          <TagSection>
-            <h4>SAY HELLO !</h4>
-            <h2>
-              We’d pleased To <br />
-              Hear From You{" "}
-            </h2>
-          </TagSection>
           <Row>
-            <Col xs={24} sm={24} md={12} lg={12}>
-              <ContactUSForm>
-                <Form onSubmitCapture={handleSubmit} layout="vertical">
-                  <Form.Item label="YOUR Name *" htmlFor="name">
-                    <Input
-                      type="text"
-                      placeholder="e.g.  Roe Smith"
-                      name="name"
-                      required={true}
-                    />
-                  </Form.Item>
-                  <Form.Item label="Email Addres *" htmlFor="mail">
-                    <Input
-                      type="mail"
-                      placeholder="e.g.  example@gmail.com"
-                      name="mail"
-                      required={true}
-                    />
-                  </Form.Item>
-                  <Form.Item label="Phone Number *" htmlFor="phone">
-                    <Input
-                      type="text"
-                      placeholder="e.g.  +55 365 256 2556"
-                      name="phone"
-                      required={true}
-                    />
-                  </Form.Item>
-                  <Form.Item label="Message *" htmlFor="message">
-                    <TextArea
-                      name="message"
-                      placeholder="Type your Message"
-                      required={true}
-                    />
-                  </Form.Item>
-                  <Button lg variant="mint">
-                    Submit Now
-                  </Button>
-                </Form>
-              </ContactUSForm>
+            <Col md={12}>
+              <AboutUsContent>
+                <h2>
+                  THE STORY <br /> YOU SHOULD KNOW
+                </h2>
+                <p>
+                  Contrary to popular belief, Lorem Ipsum is not simply random
+                  text. It has roots in a piece of classical Latin literature
+                  from 45 BC, making it over 2000 years old. Richard McClintock,
+                  a Latin professor at Hampden-Sydney College in Virginia,
+                  looked up one of the more obscure Latin words, consectetur
+                  cites of the word in classical literature.
+                </p>
+                <p>
+                  The standard chunk of Lorem Ipsum used since the 1500s is
+                  reproduced below for those interested. Sections 1.10.32 and
+                  1.10.33 from &quot;de Finibus Bonorum et Malorum&quot; by
+                  Cicero are also reproduced in their exact original a latin
+                  professor.
+                </p>
+                <Button lg variant="mint">
+                  Read Litepaper
+                </Button>
+              </AboutUsContent>
             </Col>
-            <Col xs={24} sm={24} md={12} lg={12}>
-              <ContactUsInfo>
-                <h4>Contact Info</h4>
-                <AddressInfo>
-                  <Image src={phoneIcon} alt="icon" />
-                  <ContactInfo>
-                    <h5>Call us</h5>
-                    <p>Mobile: +91 9023232046</p>
-                    <p>Hotline: 9023232046</p>
-                  </ContactInfo>
-                </AddressInfo>
-                <AddressInfo>
-                  <Image src={phoneIcon} alt="icon" />
-                  <ContactInfo>
-                    <h5>Mail us</h5>
-                    <p>Info: rajansharmaa46@gmail.com</p>
-                    <p>Support: rajansharmaa46@gmail.com</p>
-                  </ContactInfo>
-                </AddressInfo>
-              </ContactUsInfo>
+            <Col md={12}>
+              <AboutUSImages>
+                <Image src={thumb1.src} alt="" preview={false} />
+                <Image src={thumb2.src} alt="" preview={false} />
+                <Image src={thumb3.src} alt="" preview={false} />
+                <Image src={thumb4.src} alt="" preview={false} />
+              </AboutUSImages>
             </Col>
           </Row>
         </Container>
       </AboutUsWrapper>
     </>
   );
-};
+}
 
 export default AboutUs;
