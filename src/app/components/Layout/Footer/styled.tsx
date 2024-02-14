@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import footerBG from "@/assets/images/bg/footer_bg3.jpg";
 
-const FooterStyleWrapper = styled.footer`
+export const FooterStyleWrapper = styled.footer`
   a {
     display: block;
     text-decoration: none;
@@ -139,4 +139,4 @@ const FooterStyleWrapper = styled.footer`
   
 `;
 
-export default FooterStyleWrapper;
+export const FooterWrapper = styled.div``;
