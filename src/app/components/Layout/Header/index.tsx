@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FaDiscord, FaWallet } from "react-icons/fa";
 import { MdNotes } from "react-icons/md";
-import logo from "@/assets/images/logo.png";
+import logo from "@/assets/logoipsum.svg";
 import Dropdown from 'react-bootstrap/Dropdown';
 import { Image } from "antd";
 import NavWrapper from './styled';

@@ -139,4 +139,30 @@ export const FooterStyleWrapper = styled.footer`
   
 `;
 
-export const FooterWrapper = styled.div``;
+export const FooterWrapper = styled.div`
+  a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  p {
+    margin-bottom: 0;
+  }
+  .container {
+    padding-bottom: 90px;
+    padding-top: 150px;
+    background: url(${footerBG.src});
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    image {
+      padding-right: 55px;
+      p {
+        margin-top: 45px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.8);
+      }
+    }
+  }
+`;

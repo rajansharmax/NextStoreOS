@@ -1,11 +1,10 @@
-import { FooterStyleWrapper, FooterWrapper } from "./styled";
+import { FooterWrapper } from "./styled";
 import { Container, Image } from "react-bootstrap";
-import image from "@/assets/images/logo.png";
+import image from "@/assets/logoipsum.svg";
 import ArrowIcon from "@/assets/images/blog/arrow-icon.png";
 import FooterLinks from "@/assets/data/footer/FooterLinks";
 import FooterBottom from "./Footerbottom";
-import { Content } from "antd/es/layout/layout";
-import { Col, Row } from "antd";
+import { Button, Col, Form, Input, List, Row, Space } from "antd";
 
 const Footer = () => {
   return (
@@ -67,17 +66,58 @@ const Footer = () => {
       </FooterStyleWrapper> */}
 
       <FooterWrapper>
-        <Content>
-          <Container>
-              <Row>
-                <Col lg={4}>
-
-                </Col>
-              </Row>
-          </Container>
-        </Content>
-        <FooterBottom />
+        <Container>
+          <Row>
+            <Col md={8} lg={8}>
+              <Space direction="vertical">
+                <a href="#">
+                  <Image src={image.src} alt="footer logo" />
+                </a>
+                <p>
+                  Bithu is great solution for launch your NFT for minting. It
+                  uses a dictionary over 200 Latin words, combined with a
+                  handful.
+                </p>
+              </Space>
+            </Col>
+            {FooterLinks?.map((menu, i) => (
+              <Col key={i} sm={12} md={6} lg={4}>
+                <Space direction="vertical" align="center">
+                  <h5>{menu.widgetName}</h5>
+                  <List
+                    itemLayout="vertical"
+                    dataSource={menu.items}
+                    renderItem={(item, index) => (
+                      <List.Item key={index} style={{ padding: "10px" }}>
+                        <a href={item.url}>{item.title}</a>
+                      </List.Item>
+                    )}
+                  />
+                </Space>
+              </Col>
+            ))}
+            <Col md={12} lg={8}>
+              <Space direction="vertical" align="center">
+                <h5>Subscribe Newsletter</h5>
+                <Form layout="vertical">
+                  <Form.Item label="Email Addres">
+                    <Input
+                      type="text"
+                      name="text"
+                      placeholder="Email address"
+                      required
+                    />
+                  </Form.Item>
+                  <Form.Item>
+                    <Button>Submit Now</Button>
+                  </Form.Item>
+                </Form>
+              </Space>
+            </Col>
+          </Row>
+        </Container>
       </FooterWrapper>
+      <FooterBottom />
     </>
   );
 };
