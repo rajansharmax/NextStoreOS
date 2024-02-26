@@ -1,19 +1,15 @@
-'use client';
+"use client";
 import { useAppDispatch, useAppSelector } from "@/lib/hook";
 import actions from "@/lib/redux/actions";
 import Image from "next/image";
 import { useEffect } from "react";
 import Initializing from "@/app/components/Initializing";
-import Header from "@/app/components/Layout/Header";
-import Footer from "@/app/components/Layout/Footer";
-import Banner from "../common/Banner";
-import FlashSlider from "../common/FlashSlider";
-import PhotosSlider from "../common/PhotosSlider";
-import Partner from "../common/Partner";
-import WhySection from "../common/WhySection";
+import HeaderWrapper from "@/app/components/Layout/Header";
+import FooterWrapper from "@/app/components/Layout/Footer";
+import { Layout } from "antd";
+const { Header, Footer, Sider, Content } = Layout;
 
-
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const BaseLayout = ({ children }: { children: React.ReactNode }) => {
   const initialized = useAppSelector((state) => state.config.initialized);
   const dispatch = useAppDispatch();
 
@@ -23,13 +19,19 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
 
   if (!initialized) return <Initializing />;
 
-  return (<>
-    <Header />
-      <div className="layout">
-        {children}
-      </div>
-    <Footer />
-  </>);
-}
+  const layoutStyle = {
+    background: 'transparent',
+  };
 
-export default Layout;
+  return (
+    <>
+      <Layout style={layoutStyle}>
+        <HeaderWrapper />
+        <div className="layout">{children}</div>
+        <FooterWrapper />
+      </Layout>
+    </>
+  );
+};
+
+export default BaseLayout;
