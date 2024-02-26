@@ -132,8 +132,7 @@ export const FooterStyleWrapper = styled.footer`
 
 export const FooterWrapper = styled.div`
   background: url(${footerBG.src});
-  padding-bottom: 90px;
-  padding-top: 150px;
+  padding: 90px 0;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -159,6 +158,7 @@ export const FooterWrapper = styled.div`
       }
       p {
         margin-bottom: 0;
+        margin-right: 10px !important;
       }
 
       .ant-space {
@@ -166,16 +166,13 @@ export const FooterWrapper = styled.div`
           &:first-child {
             h5 {
               color: #fff;
-              margin-bottom: 45px;
             }
           }
           &:last-child {
             ul {
               margin: 0;
               padding: 0;
-
               li {
-                line-height: 45px;
                 a {
                   color: rgba(255, 255, 255, 0.7);
                   transition: 0.4s;
@@ -183,12 +180,15 @@ export const FooterWrapper = styled.div`
               }
             }
           }
+          .ant-list-item {
+            padding: 10px 0 !important;
+          }
         }
       }
     }
   }
   .newsletter {
-    .form-box {
+    .ant-form {
       position: relative;
     }
     input,
@@ -198,18 +198,21 @@ export const FooterWrapper = styled.div`
         outline: none;
       }
     }
+    h5 {
+      color: #fff;
+      margin-bottom: 45px;
+    }
     input {
       width: 100%;
       background: transparent;
       border: 2px solid #343d40;
       color: rgba(255, 255, 255, 0.7);
 
-      line-height: 60px;
+      /* line-height: 60px; */
       padding: 0 20px;
     }
 
     button {
-      height: 100%;
       width: 70px;
       position: absolute;
       right: 0;

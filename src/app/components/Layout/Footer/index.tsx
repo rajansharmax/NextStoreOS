@@ -15,7 +15,7 @@ const index = () => {
         <Footer>
           <Container>
             <Row>
-              <Col md={8} lg={8}>
+              <Col lg={8}>
                 <Space direction="vertical">
                   <a href="#">
                     <Image src={image.src} alt="footer logo" />
@@ -28,8 +28,8 @@ const index = () => {
                 </Space>
               </Col>
               {FooterLinks?.map((menu, i) => (
-                <Col key={i} sm={12} md={6} lg={4}>
-                  <Space direction="vertical" align="center">
+                <Col key={i} xs={12} sm={12} md={6} lg={4}>
+                  <Space direction="vertical">
                     <h5>{menu.widgetName}</h5>
                     <List
                       itemLayout="vertical"
@@ -43,8 +43,8 @@ const index = () => {
                   </Space>
                 </Col>
               ))}
-              <Col className="newsletter" md={12} lg={8}>
-                <Space direction="vertical" align="center">
+              <Col className="newsletter" xs={24} sm={24} md={12} lg={8}>
+                {/* <Space direction="vertical" align="center">
                   <h5>Subscribe Newsletter</h5>
                   <Form layout="vertical">
                     <Form.Item label="Email Addres">
@@ -59,7 +59,21 @@ const index = () => {
                       <Button>Submit Now</Button>
                     </Form.Item>
                   </Form>
-                </Space>
+                </Space> */}
+                <div className="footer-menu">
+                  <h5 className="menu-title">Subscribe Newsletter</h5>
+                  <div className="form-box">
+                    <input
+                      type="text"
+                      name="text"
+                      placeholder="Email address"
+                      required
+                    />
+                    <button>
+                      <Image src={ArrowIcon.src} alt="logo" />
+                    </button>
+                  </div>
+                </div>
               </Col>
             </Row>
           </Container>
