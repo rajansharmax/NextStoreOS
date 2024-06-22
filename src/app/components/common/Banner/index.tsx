@@ -32,6 +32,7 @@ const Banner = () => {
       effect="fade"
       pauseOnHover
       pauseOnDotsHover={true}
+      arrows={true}
     >
       {items.map((item, i) => (
         <BannerWrapper key={item.key}>

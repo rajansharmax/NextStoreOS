@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import StoreProvider from "./StoreProvider";
 import Head from "@/app/components/Layout/Partials/Head";
 import Layout from "./components/Layout";
-import { inter } from '@/config/Fonts'
-import { AntdRegistry } from '@ant-design/nextjs-registry';
-import 'bootstrap/dist/css/bootstrap.css';
+import { inter } from "@/config/Fonts";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
+import "bootstrap/dist/css/bootstrap.css";
+import { ConfigProvider } from "antd";
 
 export const metadata: Metadata = {
   title: "Neon Lights",
@@ -25,9 +26,9 @@ export default function RootLayout({
         <Head />
         <body className={inter.className}>
           <AntdRegistry>
-            <Layout>
-              {children}
-            </Layout>
+            <ConfigProvider>
+              <Layout>{children}</Layout>
+            </ConfigProvider>
           </AntdRegistry>
           <SpeedInsights />
           <Analytics />

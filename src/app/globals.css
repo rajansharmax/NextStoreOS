@@ -33,6 +33,10 @@ body {
   font-weight: 500;
   overflow-x: hidden;
   background-color: #040C12 !important;
+  background: #040C12;
+  .ant-layout {
+    background: #040C12;
+  }
 }
 
 img {

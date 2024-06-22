@@ -19,15 +19,11 @@ const BaseLayout = ({ children }: { children: React.ReactNode }) => {
 
   if (!initialized) return <Initializing />;
 
-  const layoutStyle = {
-    background: 'transparent',
-  };
-
   return (
     <>
-      <Layout style={layoutStyle}>
+      <Layout>
         <HeaderWrapper />
-        <div className="layout">{children}</div>
+          <Layout>{children}</Layout>
         <FooterWrapper />
       </Layout>
     </>
