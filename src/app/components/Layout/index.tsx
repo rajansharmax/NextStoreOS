@@ -9,13 +9,17 @@ import FooterWrapper from "@/app/components/Layout/Footer";
 import { Layout } from "antd";
 const { Header, Footer, Sider, Content } = Layout;
 
-const BaseLayout = ({ children }: { children: React.ReactNode }) => {
+interface LayoutProps {
+  children: React.ReactNode;
+}
+
+const BaseLayout = ({ children }: LayoutProps) => {
   const initialized = useAppSelector((state) => state.config.initialized);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(actions.config.initialize(true));
-  });
+  }, []);
 
   if (!initialized) return <Initializing />;
 
