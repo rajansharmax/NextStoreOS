@@ -1,4 +1,4 @@
 import AppState from "./reducer/interface";
 
 
-export default AppState;
+export type { AppState as default };
