@@ -17,6 +17,9 @@ const FooterBottomStyleWrapper = styled.div`
     top: 0px;
     height: 100%;
     z-index: 0;
+    img {
+      height: 100%;
+    }
   }
   .footer_shapes_right {
     position: absolute;
@@ -24,12 +27,15 @@ const FooterBottomStyleWrapper = styled.div`
     top: 0px;
     height: 100%;
     z-index: 0;
+    img {
+      height: 100%;
+    }
   }
   .footer_menu {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 100px;
+    /* min-height: 100px; */
     position: relative;
     z-index: 1;
   }
