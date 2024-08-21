@@ -25,7 +25,8 @@ export const PhotosSliderWrapper = styled.section`
   }
 
   .character-thumb {
-    height: 280px;
+    height: 250px;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
