@@ -2,9 +2,10 @@ import styled from 'styled-components';
 import Slider from 'react-slick';
 
 
-const SliderWrapper = styled(Slider)`
-`
-const SliderItemWrapper = styled.div``
+export const SliderWrapper = styled(Slider)`
 
+`;
 
-export { SliderWrapper, SliderItemWrapper };
+export const SliderItemWrapper = styled.div`
+  display: flex !important;
+`;

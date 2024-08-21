@@ -49,14 +49,12 @@ const FlashSlider = () => {
   };
 
   return (
-    <SliderSection className="coin_info_slider">
-      <SliderWrapper className="slick__slider" {...sliderSettings}>
-        {FlashSliderData?.map((item, idx) => (
-          <SliderItemWrapper className="slick__slider__item" key={idx}>
-            <div className="slide_item">
+    <SliderSection>
+      <SliderWrapper {...sliderSettings}>
+        {FlashSliderData.map((item: any, index: number) => (
+          <SliderItemWrapper key={index}>
               <Image src={item.icon} alt="icon" />
               {item.text}
-            </div>
           </SliderItemWrapper>
         ))}
       </SliderWrapper>

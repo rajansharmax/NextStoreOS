@@ -9,14 +9,4 @@ export const SliderSection = styled.section`
   line-height: 18px;
   text-transform: uppercase;
   color: #111111;
-
-  .slide_item {
-    display: flex;
-    align-items: center;
-    column-gap: 20px;
-
-    img {
-      display: inline-block !important;
-    }
-  }
 `;
