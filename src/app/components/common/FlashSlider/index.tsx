@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { Slider, SliderItem } from "@/app/components/common/Slider";
 import { SliderSection } from "./styled";
 import FlashSliderData from "@/assets/data/Home/FlashSlider";
+import { SliderItemWrapper, SliderWrapper } from "../Slider/styled";
 const FlashSlider = () => {
   const sliderSettings = {
     dots: false,
@@ -50,16 +50,16 @@ const FlashSlider = () => {
 
   return (
     <SliderSection className="coin_info_slider">
-      <Slider {...sliderSettings}>
+      <SliderWrapper className="slick__slider" {...sliderSettings}>
         {FlashSliderData?.map((item, idx) => (
-          <SliderItem key={idx}>
+          <SliderItemWrapper className="slick__slider__item" key={idx}>
             <div className="slide_item">
               <Image src={item.icon} alt="icon" />
               {item.text}
             </div>
-          </SliderItem>
+          </SliderItemWrapper>
         ))}
-      </Slider>
+      </SliderWrapper>
     </SliderSection>
   );
 };
