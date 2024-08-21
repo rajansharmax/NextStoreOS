@@ -12,7 +12,6 @@ export const BannerWrapper = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   padding: 100px 0;
-  margin-top: 90px;
 
   .breadcrumb_form {
     display: flex;
