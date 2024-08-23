@@ -18,7 +18,7 @@ export const FooterWrapper = styled(Footer)`
     padding: 40px 0 20px;
   }
   .rc-footer-columns {
-    display: flex;
+    /* display: flex; */
     .rc-footer-column {
       margin-bottom: 20px;
     }
