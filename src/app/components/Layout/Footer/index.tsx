@@ -1,5 +1,5 @@
 import FooterBottom from "./Footerbottom";
-import { Layout, Flex, Col, message, ListProps, Image } from "antd";
+import { Layout, Flex, Col, message, ListProps } from "antd";
 import {
   FooterWrapper,
   StyledForm,
@@ -12,6 +12,13 @@ import {
 import { Avatar, List, Button, Input, Form, Space } from "antd";
 const { Header, Footer, Sider, Content } = Layout;
 import "rc-footer/assets/index.css";
+import { Image } from "react-bootstrap";
+import {
+  HomeOutlined,
+  PhoneOutlined,
+  MailOutlined,
+  WechatWorkOutlined,
+} from "@ant-design/icons";
 
 const index = () => {
   const onFinish = (values: any) => {
@@ -85,17 +92,17 @@ const index = () => {
                 {
                   title: "Wishlist",
                   url: "https://kitchen.alipay.com/",
-                  description: "Sketch 工具集",
+                  description: "",
                 },
                 {
                   title: "Subscriptions",
                   url: "https://kitchen.alipay.com/",
-                  description: "Sketch 工具集",
+                  description: "",
                 },
                 {
                   title: "Log Out",
                   url: "https://kitchen.alipay.com/",
-                  description: "Sketch 工具集",
+                  description: "",
                 },
               ],
             },
@@ -115,27 +122,27 @@ const index = () => {
                 {
                   title: "Shipping Information",
                   url: "https://kitchen.alipay.com/",
-                  description: "Sketch 工具集",
+                  description: "",
                 },
                 {
                   title: "FAQs",
                   url: "https://kitchen.alipay.com/",
-                  description: "Sketch 工具集",
+                  description: "",
                 },
                 {
                   title: "Blogs",
                   url: "https://kitchen.alipay.com/",
-                  description: "Sketch 工具集",
+                  description: "",
                 },
                 {
                   title: "Latest Posts",
                   url: "https://kitchen.alipay.com/",
-                  description: "Sketch 工具集",
+                  description: "",
                 },
                 {
                   title: "Product Reviews",
                   url: "https://kitchen.alipay.com/",
-                  description: "Sketch 工具集",
+                  description: "",
                 },
               ],
             },
@@ -155,27 +162,27 @@ const index = () => {
                 {
                   title: "Privacy Policy",
                   url: "https://kitchen.alipay.com/",
-                  description: "Sketch 工具集",
+                  description: "",
                 },
                 {
                   title: "Subscribe & Save",
                   url: "https://kitchen.alipay.com/",
-                  description: "Sketch 工具集",
+                  description: "",
                 },
                 {
                   title: "Shop Now",
                   url: "https://kitchen.alipay.com/",
-                  description: "Sketch 工具集",
+                  description: "",
                 },
                 {
                   title: "Terms and Conditions",
                   url: "https://kitchen.alipay.com/",
-                  description: "Sketch 工具集",
+                  description: "",
                 },
                 {
                   title: "Site Map",
                   url: "https://kitchen.alipay.com/",
-                  description: "Sketch 工具集",
+                  description: "",
                 },
               ],
             },
@@ -191,73 +198,37 @@ const index = () => {
               title: "Contact Information",
               items: [
                 {
-                  icon: (
-                    <Image
-                      src="https://gw.alipayobjects.com/zos/rmsportal/XuVpGqBFxXplzvLjJBZB.svg"
-                      alt="yuque"
-                      width={16}
-                      height={16}
-                    />
-                  ),
+                  icon: <HomeOutlined />,
                   title: "Address",
-                  url: "https://yuque.com",
+                  url: "https://maps.app.goo.gl/DdAdjWJcxvVfZh7o9",
                   description: "Panchkula Haryana India",
                   openExternal: true,
                 },
                 {
-                  icon: (
-                    <Image
-                      src="https://gw.alipayobjects.com/zos/rmsportal/uHocHZfNWZOdsRUonZNr.png"
-                      alt="yuque"
-                      width={16}
-                      height={16}
-                    />
-                  ),
+                  icon: <PhoneOutlined />,
                   title: "Phone Support",
-                  url: "https://yunfengdie.com",
-                  description:
-                    "Call us at (123) 456-7890 during business hours",
+                  url: "tel:9023232046",
+                  description: "Call us at 9023232046 during business hours",
                   openExternal: true,
                 },
                 {
-                  icon: (
-                    <Image
-                      src="https://gw.alipayobjects.com/zos/rmsportal/uHocHZfNWZOdsRUonZNr.png"
-                      alt="yuque"
-                      width={16}
-                      height={16}
-                    />
-                  ),
+                  icon: <PhoneOutlined />,
                   title: "Sales",
-                  url: "https://yunfengdie.com",
-                  description: "sales@sales.com",
+                  url: "mailto:rajansharmaa46@gmail.com",
+                  description: "rajansharmaa46@gmail.com",
                   openExternal: true,
                 },
                 {
-                  icon: (
-                    <Image
-                      src="https://gw.alipayobjects.com/zos/rmsportal/uHocHZfNWZOdsRUonZNr.png"
-                      alt="yuque"
-                      width={16}
-                      height={16}
-                    />
-                  ),
+                  icon: <MailOutlined />,
                   title: "Support",
-                  url: "https://yunfengdie.com",
-                  description: "sales@sales.com",
+                  url: "mailto:rajansharmaa46@gmail.com",
+                  description: "rajansharmaa46@gmail.com",
                   openExternal: true,
                 },
                 {
-                  icon: (
-                    <Image
-                      src="https://gw.alipayobjects.com/zos/rmsportal/uHocHZfNWZOdsRUonZNr.png"
-                      alt="yuque"
-                      width={16}
-                      height={16}
-                    />
-                  ),
+                  icon: <WechatWorkOutlined />,
                   title: "Live Chat",
-                  url: "https://yunfengdie.com",
+                  url: "",
                   description:
                     "Chat with us during business hours or call us at (123) 456-7890",
                   openExternal: true,
@@ -265,7 +236,7 @@ const index = () => {
               ],
             },
           ]}
-          bottom="Made with ❤️ by NeonLights 4 You ❤️ "
+          bottom="2024 NeonLights | All Rights Reserved | Made with ❤️ by NeonLights 4 You"
         />
       </FooterWrapper>
 
