@@ -1,12 +1,22 @@
 import FooterBottom from "./Footerbottom";
-import { Layout, Flex, Col, message } from "antd";
-import { FooterWrapper, StyledList, StyledRow } from "./styled";
+import { Layout, Flex, Col, message, ListProps } from "antd";
+import { FooterWrapper, StyledForm, StyledList, StyledRow } from "./styled";
 import { Avatar, List, Button, Input, Form, Space } from "antd";
 const { Header, Footer, Sider, Content } = Layout;
 
+interface ListItemProps {
+  title: string;
+  link?: string;
+  icon?: string;
+}
+
+interface Item {
+  title: string;
+}
+
 const index = () => {
 
-  const data = [
+  const data: ListItemProps[] = [
     {
       title: "Ant Design Title 1",
     },
@@ -30,9 +40,12 @@ const index = () => {
       <FooterWrapper>
         <StyledRow>
           <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-            <h4>Subscribe to our newsletter</h4>
-            <p>Get all the latest information on events, sales and offers.</p>
-            <Form layout="inline" onFinish={onFinish}>
+            <h4>Join Our Newsletter Now</h4>
+            <p>
+              Be the first one to know about discounts, offers and events.
+              Unsubscribe whenever you like.
+            </p>
+            <StyledForm layout="inline" onFinish={onFinish}>
               <Form.Item
                 name="email"
                 rules={[
@@ -53,10 +66,10 @@ const index = () => {
                   Submit
                 </Button>
               </Form.Item>
-            </Form>
+            </StyledForm>
           </Col>
           <Col xs={12} sm={12} md={6} lg={4} xl={4}>
-            <h4>About</h4>
+            <h4>My Account</h4>
             <StyledList
               itemLayout="horizontal"
               dataSource={data}
@@ -70,7 +83,7 @@ const index = () => {
             />
           </Col>
           <Col xs={12} sm={12} md={6} lg={4} xl={4}>
-            <h4>About</h4>
+            <h4>Company</h4>
             <StyledList
               itemLayout="horizontal"
               dataSource={data}
@@ -84,7 +97,21 @@ const index = () => {
             />
           </Col>
           <Col xs={12} sm={12} md={6} lg={4} xl={4}>
-            <h4>Contact Us</h4>
+            <h4>Customers</h4>
+            <StyledList
+              itemLayout="horizontal"
+              dataSource={data}
+              renderItem={(item: any, index: number) => (
+                <List.Item key={index}>
+                  <List.Item.Meta
+                    title={<a href="https://ant.design">{item.title}</a>}
+                  />
+                </List.Item>
+              )}
+            />
+          </Col>
+          <Col xs={12} sm={12} md={6} lg={4} xl={4}>
+            <h4>Contact Information</h4>
             <StyledList
               itemLayout="horizontal"
               dataSource={data}

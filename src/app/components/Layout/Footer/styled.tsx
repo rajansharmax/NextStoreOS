@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Layout, Flex, Row } from "antd";
-import { Avatar, List } from "antd";
+import { Avatar, List, Form } from "antd";
 const { Footer } = Layout;
 
 export const FooterWrapper = styled(Footer)`
@@ -28,6 +28,17 @@ export const StyledList = styled(List)`
     color: #fff !important;
     &:hover {
       color: #00ffa3 !important;
+    }
+  }
+`;
+
+export const StyledForm = styled(Form)`
+  .ant-form-item {
+    margin-inline-end: 2px;
+  }
+  .ant-form-item-control-input-content {
+    button {
+      margin-left: 5px;
     }
   }
 `;
