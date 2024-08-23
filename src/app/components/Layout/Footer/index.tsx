@@ -1,131 +1,274 @@
 import FooterBottom from "./Footerbottom";
-import { Layout, Flex, Col, message, ListProps } from "antd";
-import { FooterWrapper, StyledForm, StyledList, StyledRow } from "./styled";
+import { Layout, Flex, Col, message, ListProps, Image } from "antd";
+import {
+  FooterWrapper,
+  StyledForm,
+  StyledList,
+  StyledRCFooter,
+  StyledRow,
+  Text,
+  Title,
+} from "./styled";
 import { Avatar, List, Button, Input, Form, Space } from "antd";
 const { Header, Footer, Sider, Content } = Layout;
-
-interface ListItemProps {
-  title: string;
-  link?: string;
-  icon?: string;
-}
-
-interface Item {
-  title: string;
-}
+import "rc-footer/assets/index.css";
 
 const index = () => {
-
-  const data: ListItemProps[] = [
-    {
-      title: "Ant Design Title 1",
-    },
-    {
-      title: "Ant Design Title 2",
-    },
-    {
-      title: "Ant Design Title 3",
-    },
-    {
-      title: "Ant Design Title 4",
-    },
-  ];
-
   const onFinish = (values: any) => {
-      message.success('Thanks for subscribing', 5);
+    message.success("Thanks for subscribing", 5);
   };
+
+  const ExclusiveOffers = () => {
+    return (
+      <>
+        <StyledForm layout="inline" onFinish={onFinish}>
+          <Form.Item
+            name="email"
+            rules={[
+              {
+                required: true,
+                message: "Please enter your email!",
+              },
+              {
+                type: "email",
+                message: "Please enter a valid email!",
+              },
+            ]}
+          >
+            <Input type="text" placeholder="Enter your email" />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </Form.Item>
+        </StyledForm>
+      </>
+    );
+  }
 
   return (
     <>
       <FooterWrapper>
-        <StyledRow>
-          <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-            <h4>Join Our Newsletter Now</h4>
-            <p>
-              Be the first one to know about discounts, offers and events.
-              Unsubscribe whenever you like.
-            </p>
-            <StyledForm layout="inline" onFinish={onFinish}>
-              <Form.Item
-                name="email"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please enter your email!",
-                  },
-                  {
-                    type: "email",
-                    message: "Please enter a valid email!",
-                  },
-                ]}
-              >
-                <Input type="text" placeholder="Enter your email" />
-              </Form.Item>
-              <Form.Item>
-                <Button type="primary" htmlType="submit">
-                  Submit
-                </Button>
-              </Form.Item>
-            </StyledForm>
-          </Col>
-          <Col xs={12} sm={12} md={6} lg={4} xl={4}>
-            <h4>My Account</h4>
-            <StyledList
-              itemLayout="horizontal"
-              dataSource={data}
-              renderItem={(item: any, index: number) => (
-                <List.Item key={index}>
-                  <List.Item.Meta
-                    title={<a href="https://ant.design">{item.title}</a>}
-                  />
-                </List.Item>
-              )}
-            />
-          </Col>
-          <Col xs={12} sm={12} md={6} lg={4} xl={4}>
-            <h4>Company</h4>
-            <StyledList
-              itemLayout="horizontal"
-              dataSource={data}
-              renderItem={(item: any, index: number) => (
-                <List.Item key={index}>
-                  <List.Item.Meta
-                    title={<a href="https://ant.design">{item.title}</a>}
-                  />
-                </List.Item>
-              )}
-            />
-          </Col>
-          <Col xs={12} sm={12} md={6} lg={4} xl={4}>
-            <h4>Customers</h4>
-            <StyledList
-              itemLayout="horizontal"
-              dataSource={data}
-              renderItem={(item: any, index: number) => (
-                <List.Item key={index}>
-                  <List.Item.Meta
-                    title={<a href="https://ant.design">{item.title}</a>}
-                  />
-                </List.Item>
-              )}
-            />
-          </Col>
-          <Col xs={12} sm={12} md={6} lg={4} xl={4}>
-            <h4>Contact Information</h4>
-            <StyledList
-              itemLayout="horizontal"
-              dataSource={data}
-              renderItem={(item: any, index: number) => (
-                <List.Item key={index}>
-                  <List.Item.Meta
-                    title={<a href="https://ant.design">{item.title}</a>}
-                  />
-                </List.Item>
-              )}
-            />
-          </Col>
-        </StyledRow>
+        <StyledRCFooter
+          maxColumnsPerRow={5}
+          columns={[
+            {
+              title: "Join Our Newsletter Now",
+              items: [
+                {
+                  title: (
+                    <Text>
+                      Be the first one to know about discounts, offers and
+                      events. Unsubscribe whenever you like.
+                    </Text>
+                  ),
+                  url: "#",
+                  description: <ExclusiveOffers />,
+                  openExternal: true,
+                },
+              ],
+            },
+            {
+              title: "My Account",
+              items: [
+                {
+                  title: "My Account",
+                  url: "https://pro.ant.design/",
+                  openExternal: true,
+                },
+                {
+                  title: "Orders",
+                  url: "https://mobile.ant.design/",
+                  openExternal: true,
+                },
+                {
+                  title: "Wishlist",
+                  url: "https://kitchen.alipay.com/",
+                  description: "Sketch 工具集",
+                },
+                {
+                  title: "Subscriptions",
+                  url: "https://kitchen.alipay.com/",
+                  description: "Sketch 工具集",
+                },
+                {
+                  title: "Log Out",
+                  url: "https://kitchen.alipay.com/",
+                  description: "Sketch 工具集",
+                },
+              ],
+            },
+            {
+              title: "Customer Links",
+              items: [
+                {
+                  title: "Help Center",
+                  url: "https://pro.ant.design/",
+                  openExternal: true,
+                },
+                {
+                  title: "Returns & Exchanges",
+                  url: "https://mobile.ant.design/",
+                  openExternal: true,
+                },
+                {
+                  title: "Shipping Information",
+                  url: "https://kitchen.alipay.com/",
+                  description: "Sketch 工具集",
+                },
+                {
+                  title: "FAQs",
+                  url: "https://kitchen.alipay.com/",
+                  description: "Sketch 工具集",
+                },
+                {
+                  title: "Blogs",
+                  url: "https://kitchen.alipay.com/",
+                  description: "Sketch 工具集",
+                },
+                {
+                  title: "Latest Posts",
+                  url: "https://kitchen.alipay.com/",
+                  description: "Sketch 工具集",
+                },
+                {
+                  title: "Product Reviews",
+                  url: "https://kitchen.alipay.com/",
+                  description: "Sketch 工具集",
+                },
+              ],
+            },
+            {
+              title: "Company Information",
+              items: [
+                {
+                  title: "About Us",
+                  url: "https://pro.ant.design/",
+                  openExternal: true,
+                },
+                {
+                  title: "Return Policy",
+                  url: "https://mobile.ant.design/",
+                  openExternal: true,
+                },
+                {
+                  title: "Privacy Policy",
+                  url: "https://kitchen.alipay.com/",
+                  description: "Sketch 工具集",
+                },
+                {
+                  title: "Subscribe & Save",
+                  url: "https://kitchen.alipay.com/",
+                  description: "Sketch 工具集",
+                },
+                {
+                  title: "Shop Now",
+                  url: "https://kitchen.alipay.com/",
+                  description: "Sketch 工具集",
+                },
+                {
+                  title: "Terms and Conditions",
+                  url: "https://kitchen.alipay.com/",
+                  description: "Sketch 工具集",
+                },
+                {
+                  title: "Site Map",
+                  url: "https://kitchen.alipay.com/",
+                  description: "Sketch 工具集",
+                },
+              ],
+            },
+            {
+              icon: (
+                <Image
+                  src="https://gw.alipayobjects.com/zos/rmsportal/nBVXkrFdWHxbZlmMbsaH.svg"
+                  alt="more products"
+                  width={16}
+                  height={16}
+                />
+              ),
+              title: "Contact Information",
+              items: [
+                {
+                  icon: (
+                    <Image
+                      src="https://gw.alipayobjects.com/zos/rmsportal/XuVpGqBFxXplzvLjJBZB.svg"
+                      alt="yuque"
+                      width={16}
+                      height={16}
+                    />
+                  ),
+                  title: "Address",
+                  url: "https://yuque.com",
+                  description: "Panchkula Haryana India",
+                  openExternal: true,
+                },
+                {
+                  icon: (
+                    <Image
+                      src="https://gw.alipayobjects.com/zos/rmsportal/uHocHZfNWZOdsRUonZNr.png"
+                      alt="yuque"
+                      width={16}
+                      height={16}
+                    />
+                  ),
+                  title: "Phone Support",
+                  url: "https://yunfengdie.com",
+                  description:
+                    "Call us at (123) 456-7890 during business hours",
+                  openExternal: true,
+                },
+                {
+                  icon: (
+                    <Image
+                      src="https://gw.alipayobjects.com/zos/rmsportal/uHocHZfNWZOdsRUonZNr.png"
+                      alt="yuque"
+                      width={16}
+                      height={16}
+                    />
+                  ),
+                  title: "Sales",
+                  url: "https://yunfengdie.com",
+                  description: "sales@sales.com",
+                  openExternal: true,
+                },
+                {
+                  icon: (
+                    <Image
+                      src="https://gw.alipayobjects.com/zos/rmsportal/uHocHZfNWZOdsRUonZNr.png"
+                      alt="yuque"
+                      width={16}
+                      height={16}
+                    />
+                  ),
+                  title: "Support",
+                  url: "https://yunfengdie.com",
+                  description: "sales@sales.com",
+                  openExternal: true,
+                },
+                {
+                  icon: (
+                    <Image
+                      src="https://gw.alipayobjects.com/zos/rmsportal/uHocHZfNWZOdsRUonZNr.png"
+                      alt="yuque"
+                      width={16}
+                      height={16}
+                    />
+                  ),
+                  title: "Live Chat",
+                  url: "https://yunfengdie.com",
+                  description:
+                    "Chat with us during business hours or call us at (123) 456-7890",
+                  openExternal: true,
+                },
+              ],
+            },
+          ]}
+          bottom="Made with ❤️ by NeonLights 4 You ❤️ "
+        />
       </FooterWrapper>
+
       <FooterBottom />
     </>
   );
