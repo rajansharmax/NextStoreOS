@@ -10,9 +10,15 @@ import {
   FaTelegramPlane,
   FaFacebook,
 } from "react-icons/fa";
-import React from "react";
+import React, { ReactNode } from "react";
 
-const SocialLinks = [
+interface SocialLink {
+  url: string;
+  thumb?: string;
+  icon?: ReactNode;
+}
+
+const SocialLinks: SocialLink[] = [
   {
     thumb: openseaIcon,
     url: "#",
