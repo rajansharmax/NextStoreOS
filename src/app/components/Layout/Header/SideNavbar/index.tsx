@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import { Drawer, DrawerProps, RadioChangeEvent } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import { StyledDrawer } from "./styled";
+import { menuItems } from "../MenuItems";
+import { StyledLink } from "./styled";
 
 interface NavbarProps {
   onClose: () => void;
   collapsed: boolean;
 }
 
-const Navbar = ({ onClose, collapsed }: NavbarProps) => {
+const SideNavbar = ({ onClose, collapsed }: NavbarProps) => {
   const [placement, setPlacement] = useState<DrawerProps["placement"]>("left");
 
   const onChange = (e: RadioChangeEvent) => {
@@ -25,11 +27,13 @@ const Navbar = ({ onClose, collapsed }: NavbarProps) => {
       open={collapsed}
       key={placement}
     >
-      <p>Some contents...</p>
-      <p>Some contents...</p>
-      <p>Some contents...</p>
+      {menuItems.map(({ label, href }, index) => (
+        <div key={index}>
+          <StyledLink href={href}>{label}</StyledLink>
+        </div>
+      ))}
     </StyledDrawer>
   );
 };
 
-export default Navbar;
+export default SideNavbar;

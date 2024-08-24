@@ -1,5 +1,12 @@
 const routes = {
   home: "/",
+  myAccount: '/my-account',
+  orderSample: '/orderSample',
+  bestSellers: '/best-sellers',
+  shop: '/shop',
+  customerService: '/customer-service',
+  repeatOrders: '/repeat-orders',
+  cart: '/cart',
   authors: "/authors",
   explore: "/explore",
   popularProducts: "/popular-products",
