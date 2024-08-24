@@ -9,6 +9,8 @@ import { Layout } from "antd";
 import Navbar from "@/app/components/Layout/Header/Navbar";
 import SideNavbar from "@/app/components/Layout/Header/SideNavbar";
 import HeaderNavbar from "@/app/components/Layout/Header/HeaderNavbar";
+import Breadcrumb from "@/app/components/Common/Breadcrumb";
+import { usePathname } from "next/navigation";
 const { Header, Footer, Sider, Content } = Layout;
 
 interface LayoutProps {
@@ -28,6 +30,23 @@ const BaseLayout = ({ children }: LayoutProps) => {
     setCollapsed((prevCollapsed) => !prevCollapsed);
   };
 
+  const pathname = usePathname();
+
+  // Split the pathname into an array of segments
+  const pathSegments = pathname.split("/").filter(Boolean);
+
+  // Generate breadcrumb items based on the path segments
+  const breadcrumbItems = pathSegments.map((segment, index) => {
+    // Create the href for each breadcrumb item
+    const href = "/" + pathSegments.slice(0, index + 1).join("/");
+
+    return {
+      title: segment.charAt(0).toUpperCase() + segment.slice(1), // Capitalize the segment
+      href,
+    };
+  });
+
+
   if (!initialized) return <Initializing />;
 
   return (
@@ -35,6 +54,7 @@ const BaseLayout = ({ children }: LayoutProps) => {
       <Layout>
         <HeaderNavbar />
         <Navbar onClick={handleClick} collapsed={collapsed} />
+        <Breadcrumb items={breadcrumbItems} />
         <SideNavbar onClose={handleClick} collapsed={collapsed} />
         <Layout>{children}</Layout>
         <FooterWrapper />
