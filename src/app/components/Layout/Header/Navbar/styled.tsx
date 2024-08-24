@@ -15,6 +15,5 @@ export const StyledHeader = styled(Header)`
   background-color: #171717;
   align-items: center;
   display: flex;
-  z-index: 999;
   line-height: 20px;
 `;

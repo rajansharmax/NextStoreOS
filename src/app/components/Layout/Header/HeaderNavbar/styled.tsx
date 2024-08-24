@@ -16,8 +16,14 @@ export const StyledHeader = styled(Header)`
     background-color: #171717;
     align-items: center;
     display: flex;
-    z-index: 999;
     line-height: 30px;
+    .ant-input-wrapper {
+        .ant-input-affix-wrapper {
+            &:focus-within {
+                box-shadow: none;
+            }
+        }
+    }
 `;
 
 export const StyledLink = styled(Link)`
@@ -87,7 +93,7 @@ export const MobileSearchWrapper = styled.div`
     display: none;
     @media screen and (max-width: 1130px) {
         display: inline-block;
-        padding: 0 30px;
+        padding: 0 20px;
         background-color: #171717;
     
         ${SearchInput} {
@@ -99,4 +105,38 @@ export const MobileSearchWrapper = styled.div`
 export const SearchIconWrapper = styled.div`
     cursor: pointer;
     align-items: center;
+`;
+
+export const SearchResultsList = styled.ul`
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    max-width: 600px;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: white;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    @media screen and (max-width: 1130px) {
+        top: 115px;
+    }
+`;
+
+export const SearchResultItem = styled.li`
+    padding: 10px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    &:last-child {
+        border-bottom: none;
+    }
+    &:hover {
+        background-color: #f5f5f5;
+    }
+    font-size: 16px;
+    color: #333;
 `;
