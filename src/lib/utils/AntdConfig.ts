@@ -1,4 +1,7 @@
-export const token = {
+import { ThemeConfig } from "antd";
+import { AliasToken } from "antd/es/theme/internal";
+
+export const token: Partial<AliasToken> = {
   colorPrimary: "#25db4a",
   colorBgContainer: "#171717",
   colorText: "#fff",

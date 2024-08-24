@@ -3,13 +3,15 @@ import { Drawer } from "antd";
 import Link from "next/link";
 
 export const StyledDrawer = styled(Drawer)`
-
   .ant-drawer-header-title {
     flex-direction: row-reverse;
   }
-`;
-
-export const StyledLink = styled(Link)`
-  color: #fff;
-  vertical-align: middle;
+  .ant-drawer-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .ant-menu {
+      border-inline-end: none;
+    }
+  }
 `;

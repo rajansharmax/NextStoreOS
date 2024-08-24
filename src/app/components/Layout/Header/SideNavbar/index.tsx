@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Drawer, DrawerProps, RadioChangeEvent } from "antd";
+import { Drawer, DrawerProps, RadioChangeEvent, Menu } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 import { StyledDrawer } from "./styled";
-import { menuItems } from "../MenuItems";
-import { StyledLink } from "./styled";
+import { items, items2, items3 } from "@/assets/data/Navbar";
+import type { MenuProps } from "antd";
 
 interface NavbarProps {
   onClose: () => void;
@@ -17,21 +17,34 @@ const SideNavbar = ({ onClose, collapsed }: NavbarProps) => {
     setPlacement(e.target.value);
   };
 
+  const onClick: MenuProps["onClick"] = (e: any) => {
+    console.log("click ", e);
+  };
+
   return (
     <StyledDrawer
       title="Neon Lights"
       placement={placement}
       closable={true}
       closeIcon={<CloseOutlined />}
+      width={288}
       onClose={onClose}
       open={collapsed}
       key={placement}
     >
-      {menuItems.map(({ label, href }, index) => (
-        <div key={index}>
-          <StyledLink href={href}>{label}</StyledLink>
-        </div>
-      ))}
+      <Menu
+        onClick={onClick}
+        defaultSelectedKeys={["1"]}
+        defaultOpenKeys={["sub1"]}
+        mode="inline"
+        items={items}
+      />
+      <Menu
+        mode="inline"
+        defaultSelectedKeys={["1"]}
+        defaultOpenKeys={["sub1"]}
+        items={items3}
+      />
     </StyledDrawer>
   );
 };
