@@ -17,10 +17,7 @@ const HeaderNavbar = ({ onClick, collapsed }: HeaderProps) => {
         type="text"
         icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         onClick={onClick}
-        style={{
-          fontSize: "16px",
-        }}
-      />
+      >NeonLights</StyledButton>
     </StyledHeader>
   );
 };
