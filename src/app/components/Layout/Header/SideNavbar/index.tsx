@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Drawer, DrawerProps, RadioChangeEvent, Menu } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
-import { StyledDrawer } from "./styled";
-import { items, items2, items3 } from "@/assets/data/Navbar";
+import { StyledDrawer, StyledMenu } from "./styled";
+import { items, items3 } from "@/assets/data/Navbar";
 import type { MenuProps } from "antd";
 
 interface NavbarProps {
@@ -32,14 +32,14 @@ const SideNavbar = ({ onClose, collapsed }: NavbarProps) => {
       open={collapsed}
       key={placement}
     >
-      <Menu
+      <StyledMenu
         onClick={onClick}
         defaultSelectedKeys={["1"]}
         defaultOpenKeys={["sub1"]}
         mode="inline"
         items={items}
       />
-      <Menu
+      <StyledMenu
         mode="inline"
         defaultSelectedKeys={["1"]}
         defaultOpenKeys={["sub1"]}
