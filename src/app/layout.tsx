@@ -9,6 +9,7 @@ import { inter } from "@/config/Fonts";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import "bootstrap/dist/css/bootstrap.css";
 import { ConfigProvider } from "antd";
+import { token } from "@/lib/utils/AntdConfig";
 
 export const metadata: Metadata = {
   title: "Neon Lights",
@@ -26,7 +27,11 @@ export default function RootLayout({
         <Head />
         <body className={inter.className}>
           <AntdRegistry>
-            <ConfigProvider>
+            <ConfigProvider
+              theme={{
+                token: token,
+              }}
+            >
               <Layout>{children}</Layout>
             </ConfigProvider>
           </AntdRegistry>

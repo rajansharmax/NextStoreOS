@@ -40,12 +40,6 @@ export const StyledList = styled(List)`
       height: 25px;
     }
   }
-  .ant-list-item-meta-title > a {
-    color: #fff !important;
-    &:hover {
-      color: #00ffa3 !important;
-    }
-  }
 `;
 
 export const StyledForm = styled(Form)`
@@ -55,6 +49,7 @@ export const StyledForm = styled(Form)`
   .ant-form-item-control-input-content {
     button {
       margin-left: 5px;
+      box-shadow: none;
     }
   }
   .ant-form-item-explain {
