@@ -18,16 +18,10 @@ import {
 const FooterBottom = () => {
   return (
     <FooterBottomStyleWrapper>
-      <FooterShape position="left">
-        <Image src={footerShapesLeft} alt="Footer Shapes Left" />
-      </FooterShape>
-      <FooterShape position="right">
-        <Image src={footerShapesRight} alt="Footer Shapes Right" />
-      </FooterShape>
       <FooterBottomContent>
         <BottomFooterLeft>
           <CopyrightText>
-            Copyright ©{new Date().getFullYear()} NeonLights, All rights reserved.
+            Copyright ©{new Date().getFullYear()} NeonLights4u, All rights reserved.
           </CopyrightText>
         </BottomFooterLeft>
         <BackToTopButton href="#">

@@ -239,8 +239,6 @@ const index = () => {
           bottom="2024 NeonLights | All Rights Reserved | Made with ❤️ by NeonLights 4 You"
         />
       </FooterWrapper>
-
-      <FooterBottom />
     </>
   );
 };
