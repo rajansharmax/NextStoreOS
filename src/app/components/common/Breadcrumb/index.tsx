@@ -53,7 +53,7 @@ const BreadCrumb = ({ items }: BreadCrumbProps) => {
           );
 
           return (
-            <Breadcrumb.Item key={index}>
+            <Breadcrumb.Item key={index} separator=">">
               <Dropdown overlay={menu}>
                 <a href={item.href || "#"} onClick={(e) => e.preventDefault()}>
                   {breadcrumbContent}
@@ -64,7 +64,7 @@ const BreadCrumb = ({ items }: BreadCrumbProps) => {
         }
 
         return (
-          <Breadcrumb.Item key={index} href={item.href}>
+          <Breadcrumb.Item key={index} href={item.href} separator=">">
             {breadcrumbContent}
           </Breadcrumb.Item>
         );
