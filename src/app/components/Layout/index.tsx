@@ -4,10 +4,11 @@ import actions from "@/lib/redux/actions";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Initializing from "@/app/components/Initializing";
-import HeaderNavbar from "@/app/components/Layout/HeaderNavbar";
 import FooterWrapper from "@/app/components/Layout/Footer";
-import Navbar from "@/app/components/Layout/Navbar";
 import { Layout } from "antd";
+import Navbar from "@/app/components/Layout/Header/Navbar";
+import SideNavbar from "@/app/components/Layout/Header/SideNavbar";
+import HeaderNavbar from "@/app/components/Layout/Header/HeaderNavbar";
 const { Header, Footer, Sider, Content } = Layout;
 
 interface LayoutProps {
@@ -32,9 +33,10 @@ const BaseLayout = ({ children }: LayoutProps) => {
   return (
     <>
       <Layout>
-        <HeaderNavbar onClick={handleClick} collapsed={collapsed} />
-        <Navbar onClose={handleClick} collapsed={collapsed} />
-          <Layout>{children}</Layout>
+        <HeaderNavbar />
+        <Navbar onClick={handleClick} collapsed={collapsed} />
+        <SideNavbar onClose={handleClick} collapsed={collapsed} />
+        <Layout>{children}</Layout>
         <FooterWrapper />
       </Layout>
     </>
