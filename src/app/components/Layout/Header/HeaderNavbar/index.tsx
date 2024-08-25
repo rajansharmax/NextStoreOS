@@ -67,7 +67,7 @@ const HeaderNavbar = () => {
     return (
         <>
             <StyledHeader>
-                <Logo>
+                <Logo href={routes.home}>
                     NeonLights
                 </Logo>
                 <StyledSearch>

@@ -31,7 +31,7 @@ export const StyledLink = styled(Link)`
     vertical-align: middle;
 `;
 
-export const Logo = styled.div`
+export const Logo = styled(Link)`
     margin-right: 20px;
     margin-left: 20px;
     color: #fff;
