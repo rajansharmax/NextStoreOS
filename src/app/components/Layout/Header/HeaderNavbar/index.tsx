@@ -15,6 +15,7 @@ import { menuItems } from '../MenuItems';
 import routes from "@/config/routes";
 import { isMobile } from "react-device-detect";
 import SearchInput from "./Search";
+import CartDropdown from "./Cart";
 
 const HeaderNavbar = () => {
     const [showMobileSearch, setShowMobileSearch] = useState(false);
@@ -47,15 +48,16 @@ const HeaderNavbar = () => {
                             <StyledLink href={href}>{icon}{label}</StyledLink>
                         </div>
                     ))}
+                    <div>
+                        <CartDropdown label={true} />
+                    </div>
                 </RightIcons>
                 <RightMobileIcons>
                     <SearchIconWrapper onClick={handleSearchIconClick}>
                         <SearchOutlined style={{ fontSize: '24px', marginRight: "5px" }} />
                     </SearchIconWrapper>
                     <div>
-                        <StyledLink href={routes.cart}>
-                            <ShoppingCartOutlined style={{ fontSize: '24px', marginRight: "5px" }} />
-                        </StyledLink>
+                        <CartDropdown label={false} />
                     </div>
                 </RightMobileIcons>
             </StyledHeader>
