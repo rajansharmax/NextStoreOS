@@ -10,7 +10,7 @@ import Navbar from "@/app/components/Layout/Header/Navbar";
 import SideNavbar from "@/app/components/Layout/Header/SideNavbar";
 import HeaderNavbar from "@/app/components/Layout/Header/HeaderNavbar";
 import Breadcrumb from "@/app/components/common/Breadcrumb";
-import { usePathname } from "next/navigation";
+import { useBreadcrumbItems } from "@/lib/utils/common";
 const { Header, Footer, Sider, Content } = Layout;
 
 interface LayoutProps {
@@ -30,22 +30,7 @@ const BaseLayout = ({ children }: LayoutProps) => {
     setCollapsed((prevCollapsed) => !prevCollapsed);
   };
 
-  const pathname = usePathname();
-
-  // Split the pathname into an array of segments
-  const pathSegments = pathname.split("/").filter(Boolean);
-
-  // Generate breadcrumb items based on the path segments
-  const breadcrumbItems = pathSegments.map((segment, index) => {
-    // Create the href for each breadcrumb item
-    const href = "/" + pathSegments.slice(0, index + 1).join("/");
-
-    return {
-      title: segment.charAt(0).toUpperCase() + segment.slice(1), // Capitalize the segment
-      href,
-    };
-  });
-
+  const breadcrumbItems = useBreadcrumbItems();
 
   if (!initialized) return <Initializing />;
 
