@@ -9,7 +9,7 @@ import { Layout } from "antd";
 import Navbar from "@/app/components/Layout/Header/Navbar";
 import SideNavbar from "@/app/components/Layout/Header/SideNavbar";
 import HeaderNavbar from "@/app/components/Layout/Header/HeaderNavbar";
-import Breadcrumb from "@/app/components/Common/Breadcrumb";
+import Breadcrumb from "@/app/components/common/Breadcrumb";
 import { usePathname } from "next/navigation";
 const { Header, Footer, Sider, Content } = Layout;
 
