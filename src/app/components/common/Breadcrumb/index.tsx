@@ -13,7 +13,7 @@ interface BreadcrumbItem {
   title: React.ReactNode;
   href?: string;
   icon?: React.ReactNode;
-  menu?: MenuItem[];
+  menu?: { items: MenuItem[] };
 }
 
 interface BreadCrumbProps {
@@ -32,44 +32,9 @@ const BreadCrumb = ({ items }: BreadCrumbProps) => {
   const breadcrumbItems = [...defaultItems, ...items];
 
   return (
-    <StyledBreadcrumb>
-      {breadcrumbItems.map((item, index) => {
-        const breadcrumbContent = (
-          <>
-            {item.icon && item.icon}
-            {item.title}
-          </>
-        );
-
-        if (item.menu) {
-          const menu = (
-            <Menu>
-              {item.menu.map((menuItem) => (
-                <Menu.Item key={menuItem.key} icon={menuItem.icon}>
-                  {menuItem.label}
-                </Menu.Item>
-              ))}
-            </Menu>
-          );
-
-          return (
-            <Breadcrumb.Item key={index} separator=">">
-              <Dropdown overlay={menu}>
-                <a href={item.href || "#"} onClick={(e) => e.preventDefault()}>
-                  {breadcrumbContent}
-                </a>
-              </Dropdown>
-            </Breadcrumb.Item>
-          );
-        }
-
-        return (
-          <Breadcrumb.Item key={index} href={item.href} separator=">">
-            {breadcrumbContent}
-          </Breadcrumb.Item>
-        );
-      })}
-    </StyledBreadcrumb>
+    <StyledBreadcrumb
+      items={breadcrumbItems}
+    />
   );
 };
 

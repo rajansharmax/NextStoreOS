@@ -6,8 +6,11 @@ export const StyledBreadcrumb = styled(Breadcrumb)`
   color: #25db4a;
 
   .ant-breadcrumb-separator,
-  .ant-breadcrumb-link {
+  .ant-breadcrumb-link,
+  .ant-breadcrumb-link > a {
     color: #25db4a;
+    &:hover {
+      color: #fff;
+    }
   }
-
 `;
