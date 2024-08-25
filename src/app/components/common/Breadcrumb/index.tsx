@@ -1,7 +1,7 @@
 import React from "react";
 import { Breadcrumb, Dropdown, Menu } from "antd";
 import { HomeOutlined, UserOutlined } from "@ant-design/icons";
-import { StyledBreadcrumb } from "./styled"
+import { StyledBreadcrumb } from "./styled";
 
 interface MenuItem {
   key: string;
