@@ -1,5 +1,5 @@
 import React from "react";
-import Tags from "@/app/components/Layout/Partials//Head/Tags";
+import Tags from "@/app/components/Layout/Partials/Head/Tags";
 
 const Head = () => {
   return (

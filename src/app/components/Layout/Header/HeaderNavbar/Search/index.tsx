@@ -61,9 +61,6 @@ const SearchInput = ({ placeholder, onChange }: SearchInputProps) => {
                 placeholder={placeholder}
                 value={inputValue}
                 onChange={handleInputChange}
-                onBlur={() => setDropdownVisible(false)}
-                onFocus={() => setDropdownVisible(true)}
-                onSubmit={handleInputChange}
                 size="large"
             />
             {dropdownVisible && searchResults.length > 0 && (
