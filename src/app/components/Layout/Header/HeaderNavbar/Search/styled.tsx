@@ -20,6 +20,11 @@ export const StyledSearch = styled(Search)`
             }
         }
     }
+    .ant-input {
+        &:focus {
+            box-shadow: none;
+        }
+    }
 `;
 
 export const SearchWrapper = styled.div`
@@ -44,12 +49,13 @@ export const DropdownWrapper = styled.div`
     color: #25db4a;
     background-color: #171717;
     border: 1px solid #25db4a;
-    border-top: none;
+    margin-top: 10px;
+    /* border-top: none; */
     z-index: 1000;
     max-height: 200px;
     overflow-y: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 0 0 8px 8px;
+    border-radius: 6px;
 `;
 
 export const DropdownItem = styled.div`
