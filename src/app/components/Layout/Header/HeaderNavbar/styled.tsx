@@ -3,6 +3,7 @@ import { Button, Layout, Input } from "antd";
 const { Header } = Layout;
 const { Search } = Input;
 import Link from 'next/link';
+import { ShoppingCartOutlined, SearchOutlined } from "@ant-design/icons";
 
 export const StyledButton = styled(Button)`
     margin-left: 15px;
@@ -16,7 +17,7 @@ export const StyledHeader = styled(Header)`
     background-color: #171717;
     align-items: center;
     display: flex;
-    line-height: 30px;
+    line-height: normal;
     .ant-input-wrapper {
         .ant-input-affix-wrapper {
             &:focus-within {
@@ -51,10 +52,6 @@ export const StyledSearch = styled.div`
     @media screen and (max-width: 1130px) {
         display: none;
     }
-`;
-
-export const SearchInput = styled(Search)`
-    vertical-align: middle;
 `;
 
 export const RightIcons = styled.div`
@@ -93,12 +90,9 @@ export const MobileSearchWrapper = styled.div`
     display: none;
     @media screen and (max-width: 1130px) {
         display: inline-block;
-        padding: 0 20px;
+        padding: 0 31px;
         background-color: #171717;
-    
-        ${SearchInput} {
-            width: 100%;
-        }
+
     }
 `;
 
@@ -107,36 +101,14 @@ export const SearchIconWrapper = styled.div`
     align-items: center;
 `;
 
-export const SearchResultsList = styled.ul`
-    position: absolute;
-    top: 60px;
-    width: 100%;
-    max-width: 600px;
-    max-height: 200px;
-    overflow-y: auto;
-    background-color: white;
-    border: 1px solid #d9d9d9;
-    border-radius: 4px;
-    z-index: 1000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-    @media screen and (max-width: 1130px) {
-        top: 115px;
-    }
+export const SearchIcon = styled(SearchOutlined)`
+    font-size: 24px;
+    vertical-align: middle;
+    margin-right: 5px;
 `;
 
-export const SearchResultItem = styled.li`
-    padding: 10px 16px;
-    cursor: pointer;
-    border-bottom: 1px solid #f0f0f0;
-    &:last-child {
-        border-bottom: none;
-    }
-    &:hover {
-        background-color: #f5f5f5;
-    }
-    font-size: 16px;
-    color: #333;
+export const CartIcon = styled(ShoppingCartOutlined)`
+    font-size: 24px;
+    vertical-align: middle;
+    margin-right: 5px;
 `;
