@@ -51,7 +51,7 @@ const CartDropdown: React.FC<CartDropdownProps> = ({ label }) => {
     ];
 
     return (
-        <Dropdown overlay={<Menu items={menuItems} />} placement="bottomRight" trigger={['click']}>
+        <Dropdown menu={{ items: menuItems }} placement="bottomRight" trigger={['click']}>
             <CartButton type="text">
                 <Badge count={3} offset={[10, 0]}>
                     <CartIcon />
