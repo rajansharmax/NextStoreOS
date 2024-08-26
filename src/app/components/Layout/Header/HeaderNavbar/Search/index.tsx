@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { StyledSearch, SearchWrapper, DropdownWrapper, DropdownItem } from "./styled";
 import { ProductValue } from "@/lib/redux/reducer/config/interface";
 import { useAppSelector } from "@/lib/hook";
+import { useRouter } from 'next/navigation';
 
 interface SearchInputProps {
     placeholder: string;
@@ -11,7 +12,8 @@ const SearchInput = ({ placeholder }: SearchInputProps) => {
     const [inputValue, setInputValue] = useState<string>("");
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [searchResults, setSearchResults] = useState<ProductValue[]>([]);
-    const products = useAppSelector((state) => state.config.products)
+    const products = useAppSelector((state) => state.config.products);
+    const router = useRouter();
 
     const mockSearch = (query: string) => {
         return products.filter(product =>
@@ -36,11 +38,11 @@ const SearchInput = ({ placeholder }: SearchInputProps) => {
     const handleItemClick = (item: ProductValue) => {
         setInputValue(item.label);
         setDropdownVisible(false);
-        window.location.href = `/shop/${item.value}`;
+        router.push(`/shop/${item.value}`);
     };
 
     const handleSearch = () => {
-        window.location.href = "/shop";
+        router.push("/shop");
     }
 
     return (
