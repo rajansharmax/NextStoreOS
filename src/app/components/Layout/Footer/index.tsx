@@ -82,7 +82,7 @@ const index = () => {
               title: "My Account",
               items: [
                 {
-                  title: <Link href={routes.myAccount}>My Account</Link>,
+                  title: "My Account",
                   url: "my-account",
                   openExternal: true,
                 },
