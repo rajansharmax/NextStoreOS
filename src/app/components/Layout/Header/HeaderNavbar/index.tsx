@@ -11,7 +11,7 @@ import {
     SearchIconWrapper,
 
 } from "./styled";
-import { menuItems } from '../MenuItems';
+import { menuItems } from '@/assets/data/Navbar/index';
 import routes from "@/config/routes";
 import { isMobile } from "react-device-detect";
 import SearchInput from "./Search";
@@ -24,12 +24,6 @@ const HeaderNavbar = () => {
         setShowMobileSearch(!showMobileSearch);
     };
 
-    const handleProductChange = (product: any) => {
-        if (product) {
-            window.location.href = `/products/${product.value}`;
-        }
-    };
-
     return (
         <>
             <StyledHeader>
@@ -39,7 +33,6 @@ const HeaderNavbar = () => {
                 <StyledSearch>
                     <SearchInput
                         placeholder="Search for products, brands and more"
-                        onChange={handleProductChange}
                     />
                 </StyledSearch>
                 <RightIcons>
@@ -66,7 +59,6 @@ const HeaderNavbar = () => {
                     <MobileSearchWrapper>
                         <SearchInput
                             placeholder="Search for products, brands and more"
-                            onChange={handleProductChange}
                         />
                     </MobileSearchWrapper>
                 </>

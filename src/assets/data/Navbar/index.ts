@@ -1,3 +1,4 @@
+import routes from "@/config/routes";
 import type { MenuProps } from "antd";
 import {
   LaptopOutlined,
@@ -6,9 +7,20 @@ import {
   AppstoreOutlined,
   MailOutlined,
   SettingOutlined,
+  BulbOutlined,
+  ClockCircleOutlined,
+  LikeOutlined,
+  ShoppingCartOutlined
 } from "@ant-design/icons";
 import React from "react";
 type MenuItem = Required<MenuProps>["items"][number];
+
+export const menuItems = [
+  { label: 'Best Sellers', href: routes.bestSellers, icon: React.createElement(LikeOutlined) },
+  { label: 'Order Samples', href: routes.orderSample, icon: React.createElement(BulbOutlined) },
+  { label: 'My Account', href: routes.myAccount, icon: React.createElement(UserOutlined) },
+  { label: 'Repeat Orders', href: routes.repeatOrders, icon: React.createElement(ClockCircleOutlined) },
+];
 
 export const items3: MenuItem[] = [
   {

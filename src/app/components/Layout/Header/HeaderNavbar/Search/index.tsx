@@ -1,37 +1,21 @@
 import React, { useState } from "react";
-import { StyledSearch, SearchWrapper, StyledInput, DropdownWrapper, DropdownItem } from "./styled";
+import { StyledSearch, SearchWrapper, DropdownWrapper, DropdownItem } from "./styled";
+import { ProductValue } from "@/lib/redux/reducer/config/interface";
+import { useAppSelector } from "@/lib/hook";
 
 interface SearchInputProps {
     placeholder: string;
-    onChange: (product: ProductValue | undefined) => void;
 }
 
-interface ProductValue {
-    label: string;
-    value: string;
-}
-
-const SearchInput = ({ placeholder, onChange }: SearchInputProps) => {
+const SearchInput = ({ placeholder }: SearchInputProps) => {
     const [inputValue, setInputValue] = useState<string>("");
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [searchResults, setSearchResults] = useState<ProductValue[]>([]);
+    const products = useAppSelector((state) => state.config.products)
 
     const mockSearch = (query: string) => {
-        const items: ProductValue[] = [
-            { label: "Electric Scooter", value: "electric-scooter" },
-            { label: "Mobile Phone", value: "mobile-phone" },
-            { label: "Electric Bike", value: "electric-bike" },
-            { label: "Power Bank", value: "power-bank" },
-            { label: "Headphones", value: "headphones" },
-            { label: "Smart Watch", value: "smart-watch" },
-            { label: "Laptop", value: "laptop" },
-            { label: "Tablet", value: "tablet" },
-            { label: "Wireless Charger", value: "wireless-charger" },
-            { label: "Bluetooth Speaker", value: "bluetooth-speaker" },
-        ];
-
-        return items.filter(item =>
-            item.label.toLowerCase().includes(query.toLowerCase())
+        return products.filter(product =>
+            product.label.toLowerCase().includes(query.toLowerCase())
         );
     };
 
@@ -52,8 +36,12 @@ const SearchInput = ({ placeholder, onChange }: SearchInputProps) => {
     const handleItemClick = (item: ProductValue) => {
         setInputValue(item.label);
         setDropdownVisible(false);
-        onChange(item);
+        window.location.href = `/shop/${item.value}`;
     };
+
+    const handleSearch = () => {
+        window.location.href = "/shop";
+    }
 
     return (
         <SearchWrapper>
@@ -61,6 +49,7 @@ const SearchInput = ({ placeholder, onChange }: SearchInputProps) => {
                 placeholder={placeholder}
                 value={inputValue}
                 onChange={handleInputChange}
+                onSearch={handleSearch}
                 size="large"
             />
             {dropdownVisible && searchResults.length > 0 && (
