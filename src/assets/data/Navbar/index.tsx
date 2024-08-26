@@ -13,6 +13,7 @@ import {
   ShoppingCartOutlined
 } from "@ant-design/icons";
 import React from "react";
+import Link from "next/link";
 type MenuItem = Required<MenuProps>["items"][number];
 
 export const menuItems = [
@@ -28,7 +29,7 @@ export const items3: MenuItem[] = [
   },
   {
     key: "my-account",
-    label: "My Acount",
+    label: <Link href={routes.myAccount}>My Account</Link>,
     icon: React.createElement(UserOutlined),
   },
   {

@@ -11,7 +11,7 @@ import {
     SearchIconWrapper,
 
 } from "./styled";
-import { menuItems } from '@/assets/data/Navbar/index';
+import { menuItems } from '@/assets/data/Navbar';
 import routes from "@/config/routes";
 import { isMobile } from "react-device-detect";
 import SearchInput from "./Search";

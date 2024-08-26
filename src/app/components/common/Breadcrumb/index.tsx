@@ -2,6 +2,7 @@ import React from "react";
 import { Breadcrumb, Dropdown, Menu } from "antd";
 import { HomeOutlined, UserOutlined } from "@ant-design/icons";
 import { StyledBreadcrumb } from "./styled";
+import Link from "next/link";
 
 interface MenuItem {
   key: string;
@@ -33,7 +34,15 @@ const BreadCrumb = ({ items }: BreadCrumbProps) => {
 
   return (
     <StyledBreadcrumb
-      items={breadcrumbItems}
+      items={breadcrumbItems.map((item) => ({
+        title: item.href ? (
+          <Link href={item.href} passHref>
+            {item.icon ? <>{item.icon} {item.title}</> : item.title}
+          </Link>
+        ) : (
+          <>{item.icon ? <>{item.icon} {item.title}</> : item.title}</>
+        )
+      }))}
     />
   );
 };

@@ -1,5 +1,6 @@
 import { CloseOutlined } from "@ant-design/icons";
 import { Button } from "antd";
+import Link from "next/link";
 import styled from "styled-components";
 
 export const CartButton = styled(Button)`
@@ -14,7 +15,7 @@ export const CartLabel = styled.label`
     vertical-align: middle;
 `;
 
-export const ViewCartButton = styled(Button)`
+export const ViewCartButton = styled(Link)`
     width: 100%;
     text-align: center;
     background-color: #25db4a;
