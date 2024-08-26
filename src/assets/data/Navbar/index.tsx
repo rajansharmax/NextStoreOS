@@ -29,7 +29,7 @@ export const items3: MenuItem[] = [
   },
   {
     key: "my-account",
-    label: <Link href={routes.myAccount}>My Account</Link>,
+    label: "My Account",
     icon: React.createElement(UserOutlined),
   },
   {

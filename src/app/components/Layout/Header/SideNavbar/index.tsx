@@ -4,6 +4,7 @@ import { CloseOutlined } from "@ant-design/icons";
 import { StyledDrawer, StyledMenu } from "./styled";
 import { items, items3 } from "@/assets/data/Navbar";
 import type { MenuProps } from "antd";
+import { useRouter } from "next/navigation";
 
 interface NavbarProps {
   onClose: () => void;
@@ -11,6 +12,7 @@ interface NavbarProps {
 }
 
 const SideNavbar = ({ onClose, collapsed }: NavbarProps) => {
+  const router = useRouter();
   const [placement, setPlacement] = useState<DrawerProps["placement"]>("left");
 
   const onChange = (e: RadioChangeEvent) => {
@@ -18,6 +20,9 @@ const SideNavbar = ({ onClose, collapsed }: NavbarProps) => {
   };
 
   const onClick: MenuProps["onClick"] = (e: any) => {
+    if (e.key) {
+      router.push(e.key);
+    }
     console.log("click ", e);
   };
 
@@ -41,6 +46,7 @@ const SideNavbar = ({ onClose, collapsed }: NavbarProps) => {
       />
       <StyledMenu
         mode="inline"
+        onClick={onClick}
         defaultSelectedKeys={["1"]}
         defaultOpenKeys={["sub1"]}
         items={items3}
