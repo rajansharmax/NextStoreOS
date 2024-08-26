@@ -19,6 +19,8 @@ import {
   MailOutlined,
   WechatWorkOutlined,
 } from "@ant-design/icons";
+import Link from "next/link";
+import routes from "@/config/routes";
 
 const index = () => {
   const onFinish = (values: any) => {
@@ -80,28 +82,28 @@ const index = () => {
               title: "My Account",
               items: [
                 {
-                  title: "My Account",
-                  url: "https://pro.ant.design/",
+                  title: <Link href={routes.myAccount}>My Account</Link>,
+                  url: "my-account",
                   openExternal: true,
                 },
                 {
                   title: "Orders",
-                  url: "https://mobile.ant.design/",
+                  url: "orders",
                   openExternal: true,
                 },
                 {
                   title: "Wishlist",
-                  url: "https://kitchen.alipay.com/",
+                  url: "wishlist",
                   description: "",
                 },
                 {
                   title: "Subscriptions",
-                  url: "https://kitchen.alipay.com/",
+                  url: "subscriptions",
                   description: "",
                 },
                 {
                   title: "Log Out",
-                  url: "https://kitchen.alipay.com/",
+                  url: "log-out",
                   description: "",
                 },
               ],
@@ -111,37 +113,37 @@ const index = () => {
               items: [
                 {
                   title: "Help Center",
-                  url: "https://pro.ant.design/",
+                  url: "help-center",
                   openExternal: true,
                 },
                 {
                   title: "Returns & Exchanges",
-                  url: "https://mobile.ant.design/",
+                  url: "returns-exchanges",
                   openExternal: true,
                 },
                 {
                   title: "Shipping Information",
-                  url: "https://kitchen.alipay.com/",
+                  url: "shipping-information",
                   description: "",
                 },
                 {
                   title: "FAQs",
-                  url: "https://kitchen.alipay.com/",
+                  url: "faqs",
                   description: "",
                 },
                 {
                   title: "Blogs",
-                  url: "https://kitchen.alipay.com/",
+                  url: "blogs",
                   description: "",
                 },
                 {
                   title: "Latest Posts",
-                  url: "https://kitchen.alipay.com/",
+                  url: "latest-posts",
                   description: "",
                 },
                 {
                   title: "Product Reviews",
-                  url: "https://kitchen.alipay.com/",
+                  url: "product-reviews",
                   description: "",
                 },
               ],
@@ -151,37 +153,37 @@ const index = () => {
               items: [
                 {
                   title: "About Us",
-                  url: "https://pro.ant.design/",
+                  url: "about-us",
                   openExternal: true,
                 },
                 {
                   title: "Return Policy",
-                  url: "https://mobile.ant.design/",
+                  url: "return-policy",
                   openExternal: true,
                 },
                 {
                   title: "Privacy Policy",
-                  url: "https://kitchen.alipay.com/",
+                  url: "privacy-policy",
                   description: "",
                 },
                 {
                   title: "Subscribe & Save",
-                  url: "https://kitchen.alipay.com/",
+                  url: "subscribe-save",
                   description: "",
                 },
                 {
                   title: "Shop Now",
-                  url: "https://kitchen.alipay.com/",
+                  url: "shop-now",
                   description: "",
                 },
                 {
                   title: "Terms and Conditions",
-                  url: "https://kitchen.alipay.com/",
+                  url: "terms-and-conditions",
                   description: "",
                 },
                 {
                   title: "Site Map",
-                  url: "https://kitchen.alipay.com/",
+                  url: "site-map",
                   description: "",
                 },
               ],
