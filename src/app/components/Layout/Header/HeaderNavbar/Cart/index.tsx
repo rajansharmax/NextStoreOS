@@ -3,14 +3,23 @@ import { Dropdown, Badge, Menu } from 'antd';
 import { CartIcon } from '../styled';
 import type { MenuProps } from 'antd';
 import { CartButton, CartLabel, ViewCartButton, DeleteIcon } from "./styled";
+import { useRouter } from "next/navigation";
+
 
 interface CartDropdownProps {
     label: boolean;
 }
 
 const CartDropdown: React.FC<CartDropdownProps> = ({ label }) => {
+
+    const router = useRouter();
+
     const handleDeleteItem = (key: string) => {
         console.log(`Delete item with key: ${key}`);
+    };
+
+    const onViewCart = () => {
+        router.push('/cart');
     };
 
     const menuItems: MenuProps['items'] = [
@@ -46,7 +55,7 @@ const CartDropdown: React.FC<CartDropdownProps> = ({ label }) => {
         },
         {
             key: 'view-cart',
-            label: <ViewCartButton href="/cart">View Cart</ViewCartButton>,
+            label: <ViewCartButton onClick={onViewCart}>View Cart</ViewCartButton>,
         },
     ];
 
