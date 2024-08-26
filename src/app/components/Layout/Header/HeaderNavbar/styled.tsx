@@ -30,6 +30,10 @@ export const StyledHeader = styled(Header)`
 export const StyledLink = styled(Link)`
     color: #fff;
     vertical-align: middle;
+
+    .anticon{
+        margin-right: 5px;
+    }
 `;
 
 export const Logo = styled(Link)`
