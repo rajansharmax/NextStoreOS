@@ -16,6 +16,7 @@ import routes from "@/config/routes";
 import { isMobile } from "react-device-detect";
 import SearchInput from "./Search";
 import CartDropdown from "./Cart";
+import { julee } from "@/config/Fonts";
 
 const HeaderNavbar = () => {
     const [showMobileSearch, setShowMobileSearch] = useState(false);
@@ -27,7 +28,9 @@ const HeaderNavbar = () => {
     return (
         <>
             <StyledHeader>
-                <Logo href={routes.home}>
+                <Logo
+                    className={julee.className}
+                    href={routes.home}>
                     NeonLights
                 </Logo>
                 <StyledSearch>
