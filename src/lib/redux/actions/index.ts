@@ -1,5 +1,7 @@
 import * as configActions from "./config";
 
-export default {
+const actions = {
   config: configActions,
 };
+
+export default actions;

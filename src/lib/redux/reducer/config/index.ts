@@ -5,6 +5,7 @@ const initialState: ConfigState = {
     initialized: false,
     products: [],
     categories: [],
+    cart: [],
 }
 
 export default initialState;

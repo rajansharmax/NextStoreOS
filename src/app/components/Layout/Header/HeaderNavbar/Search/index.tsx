@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { StyledSearch, SearchWrapper, DropdownWrapper, DropdownItem } from "./styled";
-import { ProductValue } from "@/lib/redux/reducer/config/interface";
 import { useAppSelector } from "@/lib/hook";
 import { useRouter } from 'next/navigation';
+import { Product } from "@/lib/redux/types";
 
 interface SearchInputProps {
     placeholder: string;
@@ -11,13 +11,13 @@ interface SearchInputProps {
 const SearchInput = ({ placeholder }: SearchInputProps) => {
     const [inputValue, setInputValue] = useState<string>("");
     const [dropdownVisible, setDropdownVisible] = useState(false);
-    const [searchResults, setSearchResults] = useState<ProductValue[]>([]);
+    const [searchResults, setSearchResults] = useState<Product[]>([]);
     const products = useAppSelector((state) => state.config.products);
     const router = useRouter();
 
     const mockSearch = (query: string) => {
         return products.filter(product =>
-            product.label.toLowerCase().includes(query.toLowerCase())
+            product.name.toLowerCase().includes(query.toLowerCase())
         );
     };
 
@@ -35,10 +35,10 @@ const SearchInput = ({ placeholder }: SearchInputProps) => {
         }
     };
 
-    const handleItemClick = (item: ProductValue) => {
-        setInputValue(item.label);
+    const handleItemClick = (item: Product) => {
+        setInputValue(item.name);
         setDropdownVisible(false);
-        router.push(`/shop/${item.value}`);
+        router.push(`/shop/${item.name}`);
     };
 
     const handleSearch = () => {
@@ -58,7 +58,7 @@ const SearchInput = ({ placeholder }: SearchInputProps) => {
                 <DropdownWrapper>
                     {searchResults.map((item, index) => (
                         <DropdownItem key={index} onClick={() => handleItemClick(item)}>
-                            {item.label}
+                            {item.name}
                         </DropdownItem>
                     ))}
                 </DropdownWrapper>

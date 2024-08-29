@@ -16,9 +16,10 @@ import {
     DeleteIcon,
     StyledDrawer
 } from "./styled";
-import { ProductValue } from "@/lib/redux/reducer/config/interface";
 import Link from 'next/link';
 import routes from '@/config/routes';
+import { useAppSelector } from '@/lib/hook';
+import { Product } from '@/lib/redux/types';
 
 interface CartDropdownProps {
     label: boolean;
@@ -26,6 +27,7 @@ interface CartDropdownProps {
 
 const CartDropdown = ({ label }: CartDropdownProps) => {
     const [visible, setVisible] = useState(false);
+    const products = useAppSelector((state) => state.config.products);
 
     const showDrawer = () => {
         setVisible(true);
@@ -39,7 +41,6 @@ const CartDropdown = ({ label }: CartDropdownProps) => {
         console.log(`Delete item with key: ${key}`);
     };
 
-    const products = useSelector((state: any) => state.config.products);
     const subtotal = products.length * 39;
 
     return (
@@ -51,7 +52,7 @@ const CartDropdown = ({ label }: CartDropdownProps) => {
                 </Badge>
             </CartButton>
             <StyledDrawer
-                title="Shopping Cart"
+                title={`Items`}
                 placement="right"
                 onClose={closeDrawer}
                 open={visible}
@@ -60,15 +61,15 @@ const CartDropdown = ({ label }: CartDropdownProps) => {
             >
                 <List
                     dataSource={products}
-                    renderItem={(item: ProductValue) => (
-                        <CartItemContainer key={item.value}>
+                    renderItem={(item: Product) => (
+                        <CartItemContainer key={item.id}>
                             <CartItem>
-                                <Image src="https://via.placeholder.com/150" alt={item.label} />
+                                <Image src="https://via.placeholder.com/150" alt={item.name} />
                                 <CartItemDetails>
-                                    <CartItemTitle>{item.label}</CartItemTitle>
+                                    <CartItemTitle>{item.name}</CartItemTitle>
                                     <CartItemPrice>$39.00</CartItemPrice>
                                 </CartItemDetails>
-                                <DeleteIcon onClick={() => handleDeleteItem(item.value)} />
+                                <DeleteIcon onClick={() => handleDeleteItem(item.id)} />
                             </CartItem>
                         </CartItemContainer>
                     )}

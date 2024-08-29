@@ -82,25 +82,13 @@ export const DeleteIcon = styled(CloseOutlined)`
 `;
 
 export const StyledDrawer = styled(Drawer)`
+    .ant-drawer-header {
+        .ant-drawer-header-title {
+            flex-direction: row-reverse;
+        }
+    }
     .ant-drawer-body{
         position: relative;
         padding: 0 24px;
-        &::-webkit-scrollbar {
-            width: 8px;
-        }
-    
-        &::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-    
-        &::-webkit-scrollbar-thumb {
-            background-color: #888;
-            border-radius: 10px;
-            border: 2px solid #f1f1f1;
-        }
-    
-        &::-webkit-scrollbar-thumb:hover {
-            background-color: #555;
-        }
     }
 `;
