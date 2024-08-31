@@ -12,17 +12,18 @@ export const CartButton = styled(Button)`
 
 export const CartLabel = styled.label`
     vertical-align: middle;
+    font-size: 16px;
 `;
 
 export const CartItemContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
+    padding: 15px 0;
     border-bottom: 1px solid #f0f0f0;
 `;
 
-export const CartItem = styled.div`
+export const StyledCartItem = styled.div`
     display: flex;
     align-items: center;
     width: 100%;
@@ -51,7 +52,7 @@ export const CartItemPrice = styled.div`
 
 export const CartFooter = styled.div`
     position: sticky;
-    bottom: -1px;
+    bottom: 0px;
     left: 0;
     width: 100%;
     background: #171717;
@@ -87,8 +88,41 @@ export const StyledDrawer = styled(Drawer)`
             flex-direction: row-reverse;
         }
     }
-    .ant-drawer-body{
+    .ant-drawer-body {
         position: relative;
         padding: 0 24px;
+        
+        .ant-list-empty-text{
+            .ant-empty-image{
+                svg{
+                    filter: invert(1);
+                }
+            }
+            .ant-empty-description{
+                color: #fff;
+            }
+        }
+    }
+`;
+
+export const QuantityControls = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 10px;
+`;
+
+export const QuantityButton = styled(Button)`
+    border: none;
+    background-color: #25db4a;
+    margin: 0 5px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    &:hover {
+        background-color: #1aa83a;
     }
 `;
