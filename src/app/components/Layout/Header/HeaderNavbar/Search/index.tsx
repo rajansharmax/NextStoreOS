@@ -38,7 +38,7 @@ const SearchInput = ({ placeholder }: SearchInputProps) => {
     const handleItemClick = (item: Product) => {
         setInputValue(item.name);
         setDropdownVisible(false);
-        router.push(`/shop/${item.name}`);
+        router.push(`/shop/${item.slug}`);
     };
 
     const handleSearch = () => {

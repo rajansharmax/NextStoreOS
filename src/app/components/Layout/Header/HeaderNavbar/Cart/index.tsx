@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Badge, List, Image, Button, Empty } from 'antd';
 import { CloseOutlined, MinusOutlined, PlusOutlined, UndoOutlined } from '@ant-design/icons';
 import { CartIcon } from '../styled';
@@ -30,6 +30,7 @@ interface CartDropdownProps {
 const CartDropdown = ({ label }: CartDropdownProps) => {
     const [visible, setVisible] = useState(false);
     const [deletedItem, setDeletedItem] = useState<CartItem | null>(null);
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     const dispatch = useAppDispatch();
 
     const cart = useAppSelector((state) => state.config.cart);
@@ -49,7 +50,11 @@ const CartDropdown = ({ label }: CartDropdownProps) => {
             setDeletedItem(itemToDelete);
             dispatch(actions.config.deleteCartItem(id));
 
-            setTimeout(() => {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
+
+            timeoutRef.current = setTimeout(() => {
                 setDeletedItem(null);
             }, 5000);
         }
@@ -57,6 +62,9 @@ const CartDropdown = ({ label }: CartDropdownProps) => {
 
     const handleUndoDelete = () => {
         if (deletedItem) {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
             dispatch(actions.config.addCartItem(deletedItem));
             setDeletedItem(null);
         }
