@@ -22,6 +22,7 @@ import routes from '@/config/routes';
 import { useAppSelector, useAppDispatch } from '@/lib/hook';
 import { CartItem } from '@/lib/redux/types';
 import actions from '@/lib/redux/actions';
+import useDeviceDetect from '@/lib/Hooks/useDeviceDetect';
 
 interface CartDropdownProps {
     label: boolean;
@@ -32,6 +33,7 @@ const CartDropdown = ({ label }: CartDropdownProps) => {
     const [deletedItem, setDeletedItem] = useState<CartItem | null>(null);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
     const dispatch = useAppDispatch();
+    const isMobile = useDeviceDetect();
 
     const cart = useAppSelector((state) => state.config.cart);
     const allItems: CartItem[] = Object.values(cart.items);
@@ -89,7 +91,7 @@ const CartDropdown = ({ label }: CartDropdownProps) => {
     return (
         <>
             <CartButton type="text" onClick={showDrawer}>
-                <Badge count={allItems.length} offset={[10, 0]}>
+                <Badge count={allItems.length} offset={[isMobile ? 0 : 10, 0]}>
                     <CartIcon />
                     {label && <CartLabel>Cart</CartLabel>}
                 </Badge>
