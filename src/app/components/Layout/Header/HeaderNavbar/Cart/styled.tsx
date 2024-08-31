@@ -51,7 +51,7 @@ export const CartItemPrice = styled.div`
 `;
 
 export const CartFooter = styled.div`
-    position: sticky;
+    position: absolute;
     bottom: 0px;
     left: 0;
     width: 100%;
@@ -83,19 +83,31 @@ export const DeleteIcon = styled(CloseOutlined)`
 `;
 
 export const StyledDrawer = styled(Drawer)`
+    .ant-drawer-content{
+        position: relative;
+    }
     .ant-drawer-header {
         .ant-drawer-header-title {
             flex-direction: row-reverse;
+            .ant-drawer-title{
+                display: flex;
+            }
         }
     }
     .ant-drawer-body {
-        position: relative;
-        padding: 0 24px;
+        padding: 0 18px;
+
+        .ant-image {
+            width: 100px;
+        }
         
         .ant-list-empty-text{
+            margin-top: 150px;
             .ant-empty-image{
+                height: auto;
                 svg{
-                    filter: invert(1);
+                    color: #ffffffcf;
+                    font-size: 70px;
                 }
             }
             .ant-empty-description{
@@ -113,15 +125,14 @@ export const QuantityControls = styled.div`
 `;
 
 export const QuantityButton = styled(Button)`
-    border: none;
     background-color: #25db4a;
     margin: 0 5px;
-    width: 28px;
-    height: 28px;
+    width: 25px;
+    height: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 15px;
     &:hover {
         background-color: #1aa83a;
     }

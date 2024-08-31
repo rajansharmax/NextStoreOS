@@ -7,7 +7,7 @@ export const products: Product[] = [
         slug: "custom-neon-sign",
         description: "A custom neon sign for home decor, personalized with any text or design.",
         price: 150.0,
-        image: "custom-neon-sign.jpg",
+        image: "https://picsum.photos/150",
         categoryId: "cat003",
     },
     {
@@ -16,7 +16,7 @@ export const products: Product[] = [
         slug: "neon-wall-art-love",
         description: "A beautiful 'Love' neon sign perfect for bedrooms and living rooms.",
         price: 80.0,
-        image: "neon-wall-art-love.jpg",
+        image: "https://picsum.photos/150g",
         categoryId: "cat004",
     },
     {
@@ -25,7 +25,7 @@ export const products: Product[] = [
         slug: "string-fairy-lights",
         description: "Battery-operated string fairy lights for indoor and outdoor decorations.",
         price: 20.0,
-        image: "string-fairy-lights.jpg",
+        image: "https://picsum.photos/150",
         categoryId: "cat005",
     },
     {
@@ -34,7 +34,7 @@ export const products: Product[] = [
         slug: "modern-table-lamp",
         description: "A modern table lamp with adjustable brightness for your study or living room.",
         price: 50.0,
-        image: "modern-table-lamp.jpg",
+        image: "https://picsum.photos/150",
         categoryId: "cat006",
     },
 ];
