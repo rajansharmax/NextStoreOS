@@ -12,8 +12,6 @@ import HeaderNavbar from "@/app/components/Layout/Header/HeaderNavbar";
 import Breadcrumb from "@/app/components/common/Breadcrumb";
 import { useBreadcrumbItems } from "@/lib/utils/common";
 const { Header, Footer, Sider, Content } = Layout;
-import ProgressBar from './Header/ProgressBar/ProgressBar';
-
 interface LayoutProps {
   children: React.ReactNode;
 }
@@ -38,7 +36,6 @@ const BaseLayout = ({ children }: LayoutProps) => {
   return (
     <>
       <Layout>
-        <ProgressBar />
         <HeaderNavbar />
         <Navbar onClick={handleClick} collapsed={collapsed} />
         <Breadcrumb items={breadcrumbItems} />
