@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Badge, List, Image, Button } from 'antd';
+import { Badge, List, Image, Button, Empty } from 'antd';
 import { CloseOutlined, MinusOutlined, PlusOutlined, UndoOutlined } from '@ant-design/icons';
 import { CartIcon } from '../styled';
 import {
@@ -87,7 +87,11 @@ const CartDropdown = ({ label }: CartDropdownProps) => {
                 </Badge>
             </CartButton>
             <StyledDrawer
-                title={`${allItems.length} item${allItems.length > 1 ? 's' : ''}`}
+                title={
+                    <>
+                        <CartIcon /> {`${allItems.length} item${allItems.length > 1 ? 's' : ''}`}
+                    </>
+                }
                 placement="right"
                 onClose={closeDrawer}
                 open={visible}
@@ -96,6 +100,14 @@ const CartDropdown = ({ label }: CartDropdownProps) => {
             >
                 <List
                     dataSource={allItems}
+                    locale={{
+                        emptyText: (
+                            <Empty
+                                image={<CartIcon />}
+                                description={<span>No items in the cart</span>}
+                            />
+                        ),
+                    }}
                     renderItem={(item: CartItem) => (
                         <CartItemContainer key={item.id}>
                             <StyledCartItem>
