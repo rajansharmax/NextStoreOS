@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Badge, List, Image } from 'antd';
-import { CloseOutlined } from '@ant-design/icons';
+import { Badge, List, Image, Button } from 'antd';
+import { CloseOutlined, MinusOutlined, PlusOutlined, UndoOutlined } from '@ant-design/icons';
 import { CartIcon } from '../styled';
 import {
     CartButton,
     CartLabel,
     CartItemContainer,
-    CartItem,
+    StyledCartItem,
     CartItemDetails,
     CartItemTitle,
     CartItemPrice,
     CartFooter,
     ViewCartButton,
     DeleteIcon,
-    StyledDrawer
-} from "./styled";
+    StyledDrawer,
+    QuantityControls,
+    QuantityButton,
+} from './styled';
 import Link from 'next/link';
 import routes from '@/config/routes';
-import { useAppSelector } from '@/lib/hook';
-import { Product } from '@/lib/redux/types';
+import { useAppSelector, useAppDispatch } from '@/lib/hook';
+import { CartItem } from '@/lib/redux/types';
+import actions from '@/lib/redux/actions';
 
 interface CartDropdownProps {
     label: boolean;
@@ -27,7 +29,11 @@ interface CartDropdownProps {
 
 const CartDropdown = ({ label }: CartDropdownProps) => {
     const [visible, setVisible] = useState(false);
-    const products = useAppSelector((state) => state.config.products);
+    const [deletedItem, setDeletedItem] = useState<CartItem | null>(null);
+    const dispatch = useAppDispatch();
+
+    const cart = useAppSelector((state) => state.config.cart);
+    const allItems: CartItem[] = Object.values(cart.items);
 
     const showDrawer = () => {
         setVisible(true);
@@ -37,22 +43,51 @@ const CartDropdown = ({ label }: CartDropdownProps) => {
         setVisible(false);
     };
 
-    const handleDeleteItem = (key: string) => {
-        console.log(`Delete item with key: ${key}`);
+    const handleDeleteItem = (id: number) => {
+        const itemToDelete = cart.items[id];
+        if (itemToDelete) {
+            setDeletedItem(itemToDelete);
+            dispatch(actions.config.deleteCartItem(id));
+
+            setTimeout(() => {
+                setDeletedItem(null);
+            }, 5000);
+        }
     };
 
-    const subtotal = products.length * 39;
+    const handleUndoDelete = () => {
+        if (deletedItem) {
+            dispatch(actions.config.addCartItem(deletedItem));
+            setDeletedItem(null);
+        }
+    };
+
+    const handleIncreaseQuantity = (id: number) => {
+        const item = cart.items[id];
+        if (item && item.quantity < 100000) {
+            dispatch(actions.config.updateCartItem({ id, quantity: item.quantity + 1 }));
+        }
+    };
+
+    const handleDecreaseQuantity = (id: number) => {
+        const item = cart.items[id];
+        if (item && item.quantity > 1) {
+            dispatch(actions.config.updateCartItem({ id, quantity: item.quantity - 1 }));
+        }
+    };
+
+    const subtotal: number = allItems.reduce((acc: number, item: CartItem) => acc + item.totalAmount, 0);
 
     return (
         <>
             <CartButton type="text" onClick={showDrawer}>
-                <Badge count={products.length} offset={[10, 0]}>
+                <Badge count={allItems.length} offset={[10, 0]}>
                     <CartIcon />
                     {label && <CartLabel>Cart</CartLabel>}
                 </Badge>
             </CartButton>
             <StyledDrawer
-                title={`Items`}
+                title={`${allItems.length} item${allItems.length > 1 ? 's' : ''}`}
                 placement="right"
                 onClose={closeDrawer}
                 open={visible}
@@ -60,25 +95,40 @@ const CartDropdown = ({ label }: CartDropdownProps) => {
                 closeIcon={<CloseOutlined />}
             >
                 <List
-                    dataSource={products}
-                    renderItem={(item: Product) => (
+                    dataSource={allItems}
+                    renderItem={(item: CartItem) => (
                         <CartItemContainer key={item.id}>
-                            <CartItem>
-                                <Image src="https://via.placeholder.com/150" alt={item.name} />
+                            <StyledCartItem>
+                                <QuantityControls>
+                                    <QuantityButton onClick={() => handleIncreaseQuantity(item.id)}>
+                                        <PlusOutlined />
+                                    </QuantityButton>
+                                    <span>{item.quantity}</span>
+                                    <QuantityButton onClick={() => handleDecreaseQuantity(item.id)}>
+                                        <MinusOutlined />
+                                    </QuantityButton>
+                                </QuantityControls>
+                                <Image src={item.product.image} alt={item.product.name} />
                                 <CartItemDetails>
-                                    <CartItemTitle>{item.name}</CartItemTitle>
-                                    <CartItemPrice>$39.00</CartItemPrice>
+                                    <CartItemTitle>{item.product.name}</CartItemTitle>
+                                    <CartItemPrice>
+                                        ${item.unitAmount.toFixed(2)} x {item.quantity} = ${item.totalAmount.toFixed(2)}
+                                    </CartItemPrice>
                                 </CartItemDetails>
                                 <DeleteIcon onClick={() => handleDeleteItem(item.id)} />
-                            </CartItem>
+                            </StyledCartItem>
                         </CartItemContainer>
                     )}
                 />
                 <CartFooter>
-                    <div>Subtotal: ${subtotal.toFixed(2)}</div>
+                    {deletedItem && (
+                        <ViewCartButton onClick={handleUndoDelete}>
+                            <UndoOutlined /> Undo
+                        </ViewCartButton>
+                    )}
                     <Link href={routes.cart} passHref>
-                        <ViewCartButton type="primary" block>
-                            View Cart
+                        <ViewCartButton type="default" block>
+                            View Cart (${subtotal.toFixed(2)})
                         </ViewCartButton>
                     </Link>
                 </CartFooter>

@@ -6,7 +6,7 @@ export interface Product {
     description: string;
     price: number;
     image: string;
-    category: Category;
+    categoryId: string;
 }
 
 /* Categories */
@@ -18,7 +18,8 @@ export interface Category {
 }
 
 /* Cart */
-export interface CartItems {
+export interface CartItem {
+    id: number;
     product: Product;
     quantity: number;
     unitAmount: number;
@@ -26,5 +27,13 @@ export interface CartItems {
 }
 
 export interface Cart {
-    items: CartItems[];
+    items: { [key: number]: CartItem };
+    totalAmount: number;
+    totalQuantity: number;
+    subTotal: number;
+    totalShipping: number;
+    orderProtectionAmount: number;
+    orderProtection: boolean;
+    currentItemQuantity: number;
+    currentItemSubtotal: number;
 }
