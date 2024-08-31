@@ -3,8 +3,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { UserRepository } from "@/lib/prisma/repository/userRepository";
 
 export async function GET(req: NextRequest) {
-    const users = await UserRepository.findAll();
-    return NextResponse.json(users);
+    try {
+        const users = await UserRepository.findAll();
+        return NextResponse.json(users);
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        return NextResponse.error();
+    }
 }
 
 // Handle other HTTP methods as needed, like POST, PUT, DELETE, etc.
