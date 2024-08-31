@@ -84,6 +84,11 @@ a {
   color: rgba(255, 255, 255, 0.8);
 }
 
-button:focus, input:focus {
+button, input, a {
+  outline: none !important;
   box-shadow: none !important;
+}
+
+.ant-result-subtitle {
+  color: #fff !important;
 }
