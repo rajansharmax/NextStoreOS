@@ -12,6 +12,7 @@ export const cart: Cart = {
                 price: 150.0,
                 image: "https://picsum.photos/150",
                 categoryId: "cat001",
+                subCategoryId: "subcat001"
             },
             quantity: 1,
             unitAmount: 150.0,
@@ -27,6 +28,7 @@ export const cart: Cart = {
                 price: 80.0,
                 image: "https://picsum.photos/150",
                 categoryId: "cat004",
+                subCategoryId: "subcat004"
             },
             quantity: 1,
             unitAmount: 80.0,
