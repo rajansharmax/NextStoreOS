@@ -4,6 +4,7 @@ import {
   StyledButton,
   StyledHeader,
 } from "./styled";
+import CategoryDropdown from "./CategoryDropdown";
 
 interface HeaderProps {
   onClick: () => void;
@@ -21,6 +22,7 @@ const Navbar = ({ onClick, collapsed }: HeaderProps) => {
         >
           NeonLights
         </StyledButton>
+        <CategoryDropdown/>
       </StyledHeader>
     </>
   );

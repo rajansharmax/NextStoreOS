@@ -17,3 +17,10 @@ export const StyledHeader = styled(Header)`
   display: flex;
   line-height: 20px;
 `;
+
+export const CategoryList = styled.div`
+  a{
+    display: flex;
+    column-gap: 3px;
+  }
+`;

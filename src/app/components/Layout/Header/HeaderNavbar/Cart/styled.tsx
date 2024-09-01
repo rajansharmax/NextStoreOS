@@ -8,6 +8,8 @@ export const CartButton = styled(Button)`
     justify-content: center;
     font-weight: 500;
     padding: 0;
+    padding-right: 9px;
+    padding-left: 4px;
 `;
 
 export const CartLabel = styled.label`
