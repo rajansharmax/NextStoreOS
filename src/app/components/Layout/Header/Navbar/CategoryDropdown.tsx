@@ -1,12 +1,17 @@
 import { useAppSelector } from '@/lib/hook';
 import { Dropdown, MenuProps } from 'antd';
 import Link from 'next/link';
-import React from 'react'
-import { CategoryList, StyledButton } from './styled';
-import { DownOutlined } from '@ant-design/icons';
+import React, { useState } from 'react';
+import { CategoryList, CatergoryDropdownWrapper } from './styled';
+import { DownOutlined, UpOutlined } from '@ant-design/icons';
 
 const CategoryDropdown = () => {
     const categories = useAppSelector((state) => state.config.categories);
+    const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+
+    const handleDropdownVisibleChange = (visible: boolean, categoryId: string) => {
+        setActiveDropdown(visible ? categoryId : null);
+    };
 
     const dropdownMenus = categories.map((category) => {
         const categoryItems: MenuProps["items"] = category.subcategories?.map((subcategory) => ({
@@ -27,20 +32,26 @@ const CategoryDropdown = () => {
         })) || [];
 
         return (
-            <Dropdown key={category.id} menu={{ items: categoryItems }}>
+            <Dropdown
+                key={category.id}
+                menu={{ items: categoryItems }}
+                onOpenChange={(visible) => handleDropdownVisibleChange(visible, category.id)}
+            >
                 <CategoryList>
-                    <StyledButton>
-                        <Link href={`/category/${category.id}`}>
-                            {category.name}
-                            <DownOutlined />
-                        </Link>
-                    </StyledButton>
+                    <Link href={`/category/${category.id}`}>
+                        {category.name}
+                        {activeDropdown === category.id ? <UpOutlined /> : <DownOutlined />}
+                    </Link>
                 </CategoryList>
             </Dropdown>
         );
     });
 
-    return <>{dropdownMenus}</>;
-}
+    return (
+        <CatergoryDropdownWrapper>
+            {dropdownMenus}
+        </CatergoryDropdownWrapper>
+    );
+};
 
-export default CategoryDropdown
+export default CategoryDropdown;
