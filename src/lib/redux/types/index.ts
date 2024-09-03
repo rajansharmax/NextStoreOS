@@ -7,6 +7,7 @@ export interface Product {
     price: number;
     image: string;
     categoryId: string;
+    subCategoryId: string;
 }
 
 /* Categories */
@@ -15,6 +16,7 @@ export interface Category {
     name: string;
     slug: string;
     products: Product[];
+    subcategories?: Category[];
 }
 
 /* Cart */

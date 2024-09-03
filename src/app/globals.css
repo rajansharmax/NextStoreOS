@@ -92,3 +92,7 @@ button, input, a {
 .ant-result-subtitle {
   color: #fff !important;
 }
+
+.ant-dropdown-menu-submenu-arrow-icon{
+  color: inherit !important;
+}

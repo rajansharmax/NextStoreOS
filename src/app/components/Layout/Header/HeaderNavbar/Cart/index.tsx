@@ -130,7 +130,7 @@ const CartDropdown = ({ label }: CartDropdownProps) => {
                                         <MinusOutlined />
                                     </QuantityButton>
                                 </QuantityControls>
-                                <Image src={item.product.image} alt={item.product.name} />
+                                <Image width={100} height={100} src={item.product.image} alt={item.product.name} />
                                 <CartItemDetails>
                                     <CartItemTitle>{item.product.name}</CartItemTitle>
                                     <CartItemPrice>
