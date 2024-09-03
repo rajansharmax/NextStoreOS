@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-// @ts-ignore
-import { UserRepository } from "@/lib/prisma/repository/postgres/userRepository";
+import { UserRepository } from "@/lib/prisma/repository/userRepository";
 
 export async function GET(req: NextRequest) {
     try {
