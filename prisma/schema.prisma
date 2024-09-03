@@ -3,20 +3,19 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 model artwork {
   id               Int               @id @default(autoincrement())
   category_id      Int?
-  tags             String            @db.LongText
+  tags             String            @db.Text
   status           Boolean
   image_name       String?           @db.VarChar(255)
-  artwork_category artwork_category? @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_881FC57612469DE2")
+  artwork_category artwork_category? @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_Artwork_Category")
 
-  @@index([category_id], map: "IDX_881FC57612469DE2")
+  @@index([category_id], name: "IDX_Artwork_Category")
 }
 
 model artwork_category {
@@ -32,9 +31,9 @@ model post {
   content   String?
   published Boolean @default(false)
   authorId  Int
-  users     users   @relation(fields: [authorId], references: [id])
+  users     users   @relation(fields: [authorId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_Post_Author")
 
-  @@index([authorId], map: "post_authorId_fkey")
+  @@index([authorId], name: "IDX_Post_Author")
 }
 
 model users {

@@ -1,4 +1,3 @@
-// @ts-ignore
 import { prisma } from '@/lib/prisma/prisma';
 
 export class UserRepository {
