@@ -124,13 +124,15 @@ export const QuantityControls = styled.div`
     align-items: center;
     flex-direction: column;
     margin-right: 10px;
+    span {
+        margin: 2px;
+    }
 `;
 
 export const QuantityButton = styled(Button)`
-    background-color: #25db4a;
     margin: 0 5px;
     width: 25px;
-    height: 25px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
