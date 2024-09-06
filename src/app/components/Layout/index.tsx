@@ -46,7 +46,7 @@ const BaseLayout = ({ children }: LayoutProps) => {
     fetchUsers();
   }, []);
 
-  // if (!initialized) return <Initializing />;
+  if (!initialized) return <Initializing />;
 
   return (
     <>
