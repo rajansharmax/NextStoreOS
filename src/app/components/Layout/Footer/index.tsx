@@ -1,5 +1,11 @@
-import FooterBottom from "./Footerbottom";
-import { Layout, Flex, Col, message, ListProps } from "antd";
+import { Image } from "react-bootstrap";
+import "rc-footer/assets/index.css";
+import {
+  HomeOutlined,
+  PhoneOutlined,
+  MailOutlined,
+  WechatWorkOutlined,
+} from "@ant-design/icons";
 import {
   FooterWrapper,
   StyledForm,
@@ -9,18 +15,7 @@ import {
   Text,
   Title,
 } from "./styled";
-import { Avatar, List, Button, Input, Form, Space } from "antd";
-const { Header, Footer, Sider, Content } = Layout;
-import "rc-footer/assets/index.css";
-import { Image } from "react-bootstrap";
-import {
-  HomeOutlined,
-  PhoneOutlined,
-  MailOutlined,
-  WechatWorkOutlined,
-} from "@ant-design/icons";
-import Link from "next/link";
-import routes from "@/config/routes";
+import { Avatar, message, Button, Input, Form, Layout } from "antd";
 
 const index = () => {
   const onFinish = (values: any) => {
@@ -61,6 +56,7 @@ const index = () => {
       <FooterWrapper>
         <StyledRCFooter
           maxColumnsPerRow={5}
+          columnLayout="space-between"
           columns={[
             {
               title: "Join Our Newsletter Now",
