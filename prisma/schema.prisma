@@ -3,43 +3,171 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
-}
-
-model artwork {
-  id               Int               @id @default(autoincrement())
-  category_id      Int?
-  tags             String            @db.Text
-  status           Boolean
-  image_name       String?           @db.VarChar(255)
-  artwork_category artwork_category? @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_Artwork_Category")
-
-  @@index([category_id], name: "IDX_Artwork_Category")
-}
-
-model artwork_category {
-  id      Int       @id @default(autoincrement())
-  title   String    @db.VarChar(255)
-  status  Boolean
-  artwork artwork[]
-}
-
-model post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  authorId  Int
-  users     users   @relation(fields: [authorId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "FK_Post_Author")
-
-  @@index([authorId], name: "IDX_Post_Author")
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model users {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  post  post[]
+  id              Int       @id @default(autoincrement())
+  email           String    @unique
+  name            String?
+  emailVerifiedAt DateTime?
+  password        String?
+  rememberToken   String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @default(now())
+  deletedAt       DateTime?
+  status          Boolean   @default(true)
+  roles           roles[]   @relation("UserRoles")
+
+  @@index([email], name: "IDX_users_Email")
+}
+
+model roles {
+  id                   Int                    @id @default(autoincrement())
+  name                 String                 @unique
+  createdAt            DateTime               @default(now())
+  updatedAt            DateTime               @default(now())
+  deletedAt            DateTime?
+  users                users[]                @relation("UserRoles")
+  permissions          permissions[]          @relation("RolePermissions")
+  role_has_permissions role_has_permissions[]
+
+  @@index([name], name: "IDX_roles_Name")
+}
+
+model role_has_permissions {
+  id            Int       @id @default(autoincrement())
+  role_id       Int
+  permission_id Int
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @default(now())
+  deletedAt     DateTime?
+
+  role       roles       @relation(fields: [role_id], references: [id])
+  permission permissions @relation(fields: [permission_id], references: [id])
+
+  @@unique([role_id, permission_id], name: "UNIQUE_role_has_permissions")
+}
+
+model permissions {
+  id                   Int                    @id @default(autoincrement())
+  name                 String                 @unique
+  createdAt            DateTime               @default(now())
+  updatedAt            DateTime               @default(now())
+  deletedAt            DateTime?
+  roles                roles[]                @relation("RolePermissions")
+  role_has_permissions role_has_permissions[]
+
+  @@index([name], name: "IDX_permissions_Name")
+}
+
+model settings {
+  id        Int       @id @default(autoincrement())
+  name      String
+  value     String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now())
+  deletedAt DateTime?
+
+  @@unique([name], name: "UNIQUE_settings")
+}
+
+// Categories
+model categories {
+  id                     Int                @id @default(autoincrement())
+  name                   String             @unique
+  slug                   String             @unique
+  sku                    String
+  skuInitial             String
+  image                  String
+  position               Int
+  isFeatured             Boolean
+  bannerImage            String
+  mobileBannerImage      String
+  thumbnailImage         String
+  categoryThumbnailImage String
+  seoMeta                Json
+  description            String
+  status                 Boolean
+  createdAt              DateTime           @default(now())
+  updatedAt              DateTime           @default(now())
+  deletedAt              DateTime?
+  products               product_category[]
+
+  @@index([name], name: "IDX_categories_Name")
+}
+
+model products {
+  id          Int                @id @default(autoincrement())
+  name        String             @unique
+  slug        String             @unique
+  sku         String
+  image       String
+  position    Int
+  isFeatured  Boolean
+  seoMeta     Json
+  description String
+  status      Boolean
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @default(now())
+  deletedAt   DateTime?
+  categories  product_category[]
+  variants    variants[]
+
+  @@index([name], name: "IDX_products_Name")
+}
+
+model variants {
+  id          Int       @id @default(autoincrement())
+  name        String    @unique
+  slug        String    @unique
+  sku         String
+  image       String
+  position    Int
+  isFeatured  Boolean
+  seoMeta     Json
+  description String
+  status      Boolean
+  product_id  Int
+  product     products  @relation(fields: [product_id], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now())
+  deletedAt   DateTime?
+
+  @@index([name], name: "IDX_variants_Name")
+}
+
+model product_category {
+  id          Int       @id @default(autoincrement())
+  product_id  Int
+  category_id Int
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now())
+  deletedAt   DateTime?
+
+  product  products   @relation(fields: [product_id], references: [id])
+  category categories @relation(fields: [category_id], references: [id])
+
+  @@unique([product_id, category_id], name: "UNIQUE_product_category")
+}
+
+// Artworks
+model artwork {
+  id          Int               @id @default(autoincrement())
+  category_id Int?
+  tags        String            @db.Text
+  status      Boolean
+  image_name  String?           @db.VarChar(255)
+  category    artwork_category? @relation(fields: [category_id], references: [id], onDelete: NoAction)
+}
+
+model artwork_category {
+  id       Int       @id @default(autoincrement())
+  title    String    @db.VarChar(255)
+  status   Boolean
+  artworks artwork[]
+
+  @@index([title], name: "IDX_artwork_category")
 }
