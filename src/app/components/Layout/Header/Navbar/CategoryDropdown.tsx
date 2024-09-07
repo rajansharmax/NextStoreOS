@@ -40,8 +40,8 @@ const CategoryDropdown = () => {
                 <CategoryList>
                     <Link href={`/category/${category.id}`}>
                         {category.name}
-                        {activeDropdown === category.id ? <UpOutlined /> : <DownOutlined />}
                     </Link>
+                    {activeDropdown === category.id ? <UpOutlined /> : <DownOutlined />}
                 </CategoryList>
             </Dropdown>
         );

@@ -5,6 +5,7 @@ import {
   StyledHeader,
 } from "./styled";
 import CategoryDropdown from "./CategoryDropdown";
+import useDeviceDetect from "@/lib/Hooks/useDeviceDetect";
 
 interface HeaderProps {
   onClick: () => void;
@@ -22,7 +23,7 @@ const Navbar = ({ onClick, collapsed }: HeaderProps) => {
         >
           NeonLights
         </StyledButton>
-        <CategoryDropdown/>
+        {(!useDeviceDetect() && <CategoryDropdown />)}
       </StyledHeader>
     </>
   );
