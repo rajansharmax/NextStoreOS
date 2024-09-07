@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ShoppingCartOutlined, SearchOutlined } from "@ant-design/icons";
+import { ShoppingCartOutlined, SearchOutlined, HeartOutlined, UserOutlined } from "@ant-design/icons";
 import {
     StyledHeader,
     StyledSearch,
@@ -17,6 +17,7 @@ import { isMobile } from "react-device-detect";
 import SearchInput from "./Search";
 import CartDropdown from "./Cart";
 import { julee } from "@/config/Fonts";
+import Link from "next/link";
 
 const HeaderNavbar = () => {
     const [showMobileSearch, setShowMobileSearch] = useState(false);
@@ -50,8 +51,18 @@ const HeaderNavbar = () => {
                 </RightIcons>
                 <RightMobileIcons>
                     <SearchIconWrapper onClick={handleSearchIconClick}>
-                        <SearchOutlined style={{ fontSize: '24px', marginRight: "5px" }} />
+                        <SearchOutlined />
                     </SearchIconWrapper>
+                    <div>
+                        <Link href={routes.wishlists}>
+                            <HeartOutlined />
+                        </Link>
+                    </div>
+                    <div>
+                        <Link href={routes.myAccount}>
+                            <UserOutlined />
+                        </Link>
+                    </div>
                     <div>
                         <CartDropdown label={false} />
                     </div>

@@ -25,6 +25,10 @@ export const StyledHeader = styled(Header)`
             }
         }
     }
+    .anticon{
+        font-size: 24px;
+        margin-right: 5px;
+    }
 `;
 
 export const StyledLink = styled(Link)`
@@ -87,6 +91,15 @@ export const RightMobileIcons = styled.div`
         margin-right: 20px;
         gap: 20px;
         align-items: center;
+
+        a {
+            color: #fff;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        gap: 10px;
+        margin-right: 0px;
     }
 `;
 
