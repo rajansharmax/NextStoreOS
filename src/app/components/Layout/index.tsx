@@ -11,6 +11,7 @@ import SideNavbar from "@/app/components/Layout/Header/SideNavbar";
 import HeaderNavbar from "@/app/components/Layout/Header/HeaderNavbar";
 import Breadcrumb from "@/app/components/common/Breadcrumb";
 import { useBreadcrumbItems } from "@/lib/utils/common";
+import HeaderTopBar from "./Header/HeaderTopBar";
 const { Header, Footer, Sider, Content } = Layout;
 interface LayoutProps {
   children: React.ReactNode;
@@ -51,6 +52,7 @@ const BaseLayout = ({ children }: LayoutProps) => {
   return (
     <>
       <Layout>
+        <HeaderTopBar />
         <HeaderNavbar />
         <Navbar onClick={handleClick} collapsed={collapsed} />
         <Breadcrumb items={breadcrumbItems} />
