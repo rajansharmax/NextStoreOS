@@ -13,6 +13,8 @@ interface HeaderProps {
 }
 
 const Navbar = ({ onClick, collapsed }: HeaderProps) => {
+  const isMobile = useDeviceDetect();
+
   return (
     <>
       <StyledHeader>
@@ -23,7 +25,7 @@ const Navbar = ({ onClick, collapsed }: HeaderProps) => {
         >
           NeonLights
         </StyledButton>
-        {(!useDeviceDetect() && <CategoryDropdown />)}
+        {!isMobile && <CategoryDropdown />}
       </StyledHeader>
     </>
   );
