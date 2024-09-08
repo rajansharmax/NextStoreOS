@@ -4,7 +4,6 @@ import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import StoreProvider from "./StoreProvider";
 import Head from "@/app/components/Layout/Partials/Head";
-import Layout from "./components/Layout";
 import { inter } from "@/config/Fonts";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import "bootstrap/dist/css/bootstrap.css";
@@ -44,7 +43,7 @@ export default function RootLayout({
                 speed={100}
                 shadow="0 0 10px #25db4a,0 0 5px #25db4a"
               />
-              <Layout>{children}</Layout>
+              {children}
             </ConfigProvider>
           </AntdRegistry>
           <SpeedInsights />
