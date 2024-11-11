@@ -6,8 +6,10 @@ const { Footer } = Layout;
 
 export const StyledRCFooter = styled(RCFooter)`
   .ant-form {
-    display: flex;
-    flex-wrap: nowrap !important;
+    gap: 10px;
+    @media screen and (max-width: 768px) {
+      justify-content: center;
+    }
   }
 `;
 
@@ -51,12 +53,12 @@ export const StyledForm = styled(Form)`
   }
   .ant-form-item-control-input-content {
     button {
-      margin-left: 5px;
+      /* margin-left: 5px; */
       box-shadow: none;
     }
   }
   .ant-form-item-explain {
-    position: absolute;
+    /* position: absolute; */
   }
 `;
 

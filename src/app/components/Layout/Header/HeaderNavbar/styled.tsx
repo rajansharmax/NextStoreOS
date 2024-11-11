@@ -41,8 +41,6 @@ export const StyledLink = styled(Link)`
 `;
 
 export const Logo = styled(Link)`
-    margin-right: 20px;
-    margin-left: 20px;
     color: #fff;
     font-weight: bold;
     font-size: 24px;
