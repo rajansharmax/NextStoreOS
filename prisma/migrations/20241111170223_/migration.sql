@@ -1,29 +1,18 @@
-/*
-  Warnings:
+-- CreateTable
+CREATE TABLE "users" (
+    "id" SERIAL NOT NULL,
+    "email" TEXT NOT NULL,
+    "name" TEXT,
+    "emailVerifiedAt" TIMESTAMP(3),
+    "password" TEXT,
+    "rememberToken" TEXT,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "deletedAt" TIMESTAMP(3),
+    "status" BOOLEAN NOT NULL DEFAULT true,
 
-  - You are about to drop the `post` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropForeignKey
-ALTER TABLE "artwork" DROP CONSTRAINT "FK_Artwork_Category";
-
--- DropForeignKey
-ALTER TABLE "post" DROP CONSTRAINT "FK_Post_Author";
-
--- DropIndex
-DROP INDEX "IDX_Artwork_Category";
-
--- AlterTable
-ALTER TABLE "users" ADD COLUMN     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-ADD COLUMN     "deletedAt" TIMESTAMP(3),
-ADD COLUMN     "emailVerifiedAt" TIMESTAMP(3),
-ADD COLUMN     "password" TEXT,
-ADD COLUMN     "rememberToken" TEXT,
-ADD COLUMN     "status" BOOLEAN NOT NULL DEFAULT true,
-ADD COLUMN     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;
-
--- DropTable
-DROP TABLE "post";
+    CONSTRAINT "users_pkey" PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "roles" (
@@ -147,6 +136,26 @@ CREATE TABLE "product_category" (
 );
 
 -- CreateTable
+CREATE TABLE "artwork" (
+    "id" SERIAL NOT NULL,
+    "category_id" INTEGER,
+    "tags" TEXT NOT NULL,
+    "status" BOOLEAN NOT NULL,
+    "image_name" VARCHAR(255),
+
+    CONSTRAINT "artwork_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "artwork_category" (
+    "id" SERIAL NOT NULL,
+    "title" VARCHAR(255) NOT NULL,
+    "status" BOOLEAN NOT NULL,
+
+    CONSTRAINT "artwork_category_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "_UserRoles" (
     "A" INTEGER NOT NULL,
     "B" INTEGER NOT NULL
@@ -157,6 +166,12 @@ CREATE TABLE "_RolePermissions" (
     "A" INTEGER NOT NULL,
     "B" INTEGER NOT NULL
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
+
+-- CreateIndex
+CREATE INDEX "IDX_users_Email" ON "users"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "roles_name_key" ON "roles"("name");
@@ -207,6 +222,9 @@ CREATE INDEX "IDX_variants_Name" ON "variants"("name");
 CREATE UNIQUE INDEX "product_category_product_id_category_id_key" ON "product_category"("product_id", "category_id");
 
 -- CreateIndex
+CREATE INDEX "IDX_artwork_category" ON "artwork_category"("title");
+
+-- CreateIndex
 CREATE UNIQUE INDEX "_UserRoles_AB_unique" ON "_UserRoles"("A", "B");
 
 -- CreateIndex
@@ -217,12 +235,6 @@ CREATE UNIQUE INDEX "_RolePermissions_AB_unique" ON "_RolePermissions"("A", "B")
 
 -- CreateIndex
 CREATE INDEX "_RolePermissions_B_index" ON "_RolePermissions"("B");
-
--- CreateIndex
-CREATE INDEX "IDX_artwork_category" ON "artwork_category"("title");
-
--- CreateIndex
-CREATE INDEX "IDX_users_Email" ON "users"("email");
 
 -- AddForeignKey
 ALTER TABLE "role_has_permissions" ADD CONSTRAINT "role_has_permissions_role_id_fkey" FOREIGN KEY ("role_id") REFERENCES "roles"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
