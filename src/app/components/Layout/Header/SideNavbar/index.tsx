@@ -28,7 +28,7 @@ const SideNavbar = ({ onClose, collapsed }: NavbarProps) => {
 
   return (
     <StyledDrawer
-      title="Neon Lights"
+      title="Next Store"
       placement={placement}
       closable={true}
       closeIcon={<CloseOutlined />}

@@ -34,7 +34,7 @@ const Initializing = () => {
           fontFamily: "Monospace",
         }}
       >
-        NeonLights...
+        NextStore...
       </p>
     </div>
   );

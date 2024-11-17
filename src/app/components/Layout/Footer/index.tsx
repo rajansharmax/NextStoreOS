@@ -234,7 +234,7 @@ const index = () => {
               ],
             },
           ]}
-          bottom="2024 NeonLights | All Rights Reserved | Made with ❤️ by NeonLights 4 You"
+          bottom="2024 NextStore | All Rights Reserved | Made with ❤️ by NextStore 4 You"
         />
       </FooterWrapper>
     </>

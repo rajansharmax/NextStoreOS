@@ -32,7 +32,7 @@ const HeaderNavbar = () => {
                 <Logo
                     className={julee.className}
                     href={routes.home}>
-                    NeonLights
+                    NextStore
                 </Logo>
                 <StyledSearch>
                     <SearchInput

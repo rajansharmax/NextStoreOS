@@ -13,8 +13,8 @@ import { token } from "@/lib/utils/AntdConfig";
 import NextTopLoader from "nextjs-toploader";
 
 export const metadata: Metadata = {
-  title: "Neon Lights",
-  description: "Neon Lights",
+  title: "Next Store",
+  description: "Next Store",
 };
 
 export default function RootLayout({

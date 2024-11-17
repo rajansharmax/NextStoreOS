@@ -20,7 +20,7 @@ const Partner = () => {
               {PartnerData.map((item, i) => (
                 <li key={i}>
                   <a href="#">
-                    <Image src={item} alt="NeonLights partner" />
+                    <Image src={item} alt="NextStore partner" />
                   </a>
                 </li>
               ))}

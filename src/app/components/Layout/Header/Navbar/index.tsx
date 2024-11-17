@@ -23,7 +23,7 @@ const Navbar = ({ onClick, collapsed }: HeaderProps) => {
           icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
           onClick={onClick}
         >
-          NeonLights
+          NextStore
         </StyledButton>
         {!isMobile && <CategoryDropdown />}
       </StyledHeader>

@@ -3,7 +3,7 @@ import shapeIcon from "@/assets/images/icon/mint_live_icon.svg";
 const FlashSliderData = [
   {
     icon: shapeIcon,
-    text: "NeonLights",
+    text: "NextStore",
   },
   {
     icon: shapeIcon,
@@ -11,7 +11,7 @@ const FlashSliderData = [
   },
   {
     icon: shapeIcon,
-    text: "NeonLights",
+    text: "NextStore",
   },
   {
     icon: shapeIcon,
@@ -19,7 +19,7 @@ const FlashSliderData = [
   },
   {
     icon: shapeIcon,
-    text: "NeonLights",
+    text: "NextStore",
   },
   {
     icon: shapeIcon,
@@ -27,7 +27,7 @@ const FlashSliderData = [
   },
   {
     icon: shapeIcon,
-    text: "NeonLights",
+    text: "NextStore",
   },
   {
     icon: shapeIcon,
@@ -35,7 +35,7 @@ const FlashSliderData = [
   },
   {
     icon: shapeIcon,
-    text: "NeonLights",
+    text: "NextStore",
   },
   {
     icon: shapeIcon,
@@ -43,7 +43,7 @@ const FlashSliderData = [
   },
   {
     icon: shapeIcon,
-    text: "NeonLights",
+    text: "NextStore",
   },
   {
     icon: shapeIcon,

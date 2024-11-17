@@ -21,7 +21,7 @@ const FooterBottom = () => {
       <FooterBottomContent>
         <BottomFooterLeft>
           <CopyrightText>
-            Copyright ©{new Date().getFullYear()} NeonLights4u, All rights reserved.
+            Copyright ©{new Date().getFullYear()} NextStore4u, All rights reserved.
           </CopyrightText>
         </BottomFooterLeft>
         <BackToTopButton href="#">

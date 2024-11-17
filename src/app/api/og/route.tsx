@@ -20,7 +20,7 @@ export async function GET() {
           alignItems: 'center',
         }}
       >
-        Neon Lights
+        Next Store
       </div>
     ),
     {

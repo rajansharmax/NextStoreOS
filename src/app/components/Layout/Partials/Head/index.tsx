@@ -5,7 +5,7 @@ const Head = () => {
   return (
     <head>
       <meta charSet="utf-8" />
-      <title>Neon Lights</title>
+      <title>Next Store</title>
       <meta name="description" content="" />
       <link rel="shortcut icon" type="image/x-icon" href={"/vercel.svg"} />
       <meta httpEquiv="x-ua-compatible" content="ie=edge" />
