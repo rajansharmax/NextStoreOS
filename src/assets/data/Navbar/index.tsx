@@ -19,7 +19,7 @@ type MenuItem = Required<MenuProps>["items"][number];
 export const menuItems = [
   // { label: 'Best Sellers', href: routes.bestSellers, icon: React.createElement(LikeOutlined) },
   // { label: 'Order Samples', href: routes.orderSample, icon: React.createElement(BulbOutlined) },
-  { label: 'My Account', href: routes.myAccount },
+  { label: 'My Account', href: routes.myAccount, icon: React.createElement(UserOutlined) },
   // { label: 'Repeat Orders', href: routes.repeatOrders, icon: React.createElement(ClockCircleOutlined) },
 ];
 
