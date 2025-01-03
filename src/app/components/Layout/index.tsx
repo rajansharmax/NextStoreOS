@@ -33,18 +33,18 @@ const BaseLayout = ({ children }: LayoutProps) => {
   const breadcrumbItems = useBreadcrumbItems();
 
   useEffect(() => {
-    async function fetchUsers() {
-      const response = await fetch("/api/users");
+    // async function fetchUsers() {
+    //   const response = await fetch("/api/users");
 
-      if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-      } else {
-        console.error("Failed to fetch users");
-      }
-    }
+    //   if (response.ok) {
+    //     const data = await response.json();
+    //     console.log(data);
+    //   } else {
+    //     console.error("Failed to fetch users");
+    //   }
+    // }
 
-    fetchUsers();
+    // fetchUsers();
   }, []);
 
   if (!initialized) return <Initializing />;
